@@ -1,6 +1,6 @@
 using System;
 
-namespace PIP_LCMP.WebApi.Areas.HelpPage.ModelDescriptions
+namespace PIP_LCMP.Api.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Describes a type model.

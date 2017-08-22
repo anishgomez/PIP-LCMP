@@ -5,9 +5,9 @@ using System.Reflection;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
 using System.Xml.XPath;
-using PIP_LCMP.WebApi.Areas.HelpPage.ModelDescriptions;
+using PIP_LCMP.Api.Areas.HelpPage.ModelDescriptions;
 
-namespace PIP_LCMP.WebApi.Areas.HelpPage
+namespace PIP_LCMP.Api.Areas.HelpPage
 {
     /// <summary>
     /// A custom <see cref="IDocumentationProvider"/> that reads the API documentation from an XML documentation file.

@@ -1,7 +1,7 @@
 using System.Web.Http;
 using System.Web.Mvc;
 
-namespace PIP_LCMP.WebApi.Areas.HelpPage
+namespace PIP_LCMP.Api.Areas.HelpPage
 {
     public class HelpPageAreaRegistration : AreaRegistration
     {

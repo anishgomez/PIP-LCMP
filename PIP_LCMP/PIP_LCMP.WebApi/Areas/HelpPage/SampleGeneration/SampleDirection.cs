@@ -1,4 +1,4 @@
-namespace PIP_LCMP.WebApi.Areas.HelpPage
+namespace PIP_LCMP.Api.Areas.HelpPage
 {
     /// <summary>
     /// Indicates whether the sample is used for request or response

@@ -10,7 +10,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace PIP_LCMP.WebApi
+namespace PIP_LCMP.Api
 {
     public class WebApiApplication : System.Web.HttpApplication
     {

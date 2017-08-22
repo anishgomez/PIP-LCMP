@@ -3,7 +3,7 @@ using System.Text;
 using System.Web;
 using System.Web.Http.Description;
 
-namespace PIP_LCMP.WebApi.Areas.HelpPage
+namespace PIP_LCMP.Api.Areas.HelpPage
 {
     public static class ApiDescriptionExtensions
     {

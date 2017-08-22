@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace PIP_LCMP.WebApi
+namespace PIP_LCMP.Api
 {
     public class BundleConfig
     {
