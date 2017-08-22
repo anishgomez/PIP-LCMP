@@ -30,8 +30,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,7 +51,83 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgeDataInput.cs">
+      <DependentUpon>LCMPDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CostCenters.cs">
+      <DependentUpon>LCMPDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Equipment.cs">
+      <DependentUpon>LCMPDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Fleet.cs">
+      <DependentUpon>LCMPDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FleetAgeColours.cs">
+      <DependentUpon>LCMPDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FleetCostCenterMapping.cs">
+      <DependentUpon>LCMPDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FleetModel.cs">
+      <DependentUpon>LCMPDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FleetTransactions.cs">
+      <DependentUpon>LCMPDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LCMPDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LCMPDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LCMPDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LCMPDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LCMPDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LCMPDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="LubricantCost.cs">
+      <DependentUpon>LCMPDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TyreCost.cs">
+      <DependentUpon>LCMPDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users.cs">
+      <DependentUpon>LCMPDataModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="LCMPDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LCMPDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="LCMPDataModel.edmx.diagram">
+      <DependentUpon>LCMPDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LCMPDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>LCMPDataModel.Context.cs</LastGenOutput>
+      <DependentUpon>LCMPDataModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="LCMPDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LCMPDataModel.edmx</DependentUpon>
+      <LastGenOutput>LCMPDataModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

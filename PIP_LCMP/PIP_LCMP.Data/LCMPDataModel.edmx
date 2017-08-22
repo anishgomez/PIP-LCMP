@@ -1,0 +1,807 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LCMPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AgeDataInput">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fleetmodelid" Type="int" />
+          <Property Name="colorid" Type="int" />
+          <Property Name="rangestart" Type="int" />
+          <Property Name="rangeend" Type="int" />
+          <Property Name="fleetid" Type="int" />
+        </EntityType>
+        <EntityType Name="CostCenters">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="description" Type="nvarchar" MaxLength="500" />
+          <Property Name="elementid" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="fleetmodelid" Type="int" />
+        </EntityType>
+        <EntityType Name="Fleet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="FleetAgeColours">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="colour" Type="nvarchar" MaxLength="50" />
+          <Property Name="description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FleetCostCenterMapping">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="fleetied" Type="int" />
+          <Property Name="costcenterid" Type="int" />
+          <Property Name="count" Type="int" />
+        </EntityType>
+        <EntityType Name="FleetModel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="fleetid" Type="int" />
+        </EntityType>
+        <EntityType Name="FleetTransactions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fleetid" Type="int" />
+          <Property Name="fleetmodelid" Type="int" />
+          <Property Name="equipmentid" Type="int" />
+          <Property Name="costcenterid" Type="int" />
+          <Property Name="prontoplantnumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="pmtasknumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="nextdue" Type="int" />
+          <Property Name="activity" Type="nvarchar" MaxLength="50" />
+          <Property Name="currenthour" Type="int" />
+          <Property Name="oem" Type="int" />
+          <Property Name="frequency" Type="int" />
+          <Property Name="labourduration" Type="int" />
+          <Property Name="labourcost" Type="int" />
+          <Property Name="materialcost" Type="int" />
+          <Property Name="oilcapacity" Type="int" />
+          <Property Name="oilcost" Type="int" />
+          <Property Name="tyrescost" Type="int" />
+          <Property Name="totalcost" Type="int" />
+          <Property Name="lastchange" Type="int" />
+          <Property Name="downtime" Type="int" />
+        </EntityType>
+        <EntityType Name="LubricantCost">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="component" Type="nvarchar" MaxLength="250" />
+          <Property Name="cost" Type="float" />
+        </EntityType>
+        <EntityType Name="TyreCost">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="modelid" Type="int" />
+          <Property Name="specification" Type="nvarchar" MaxLength="150" />
+          <Property Name="price" Type="int" />
+          <Property Name="count" Type="int" />
+          <Property Name="life" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstname" Type="nvarchar" MaxLength="50" />
+          <Property Name="lastname" Type="nvarchar" MaxLength="50" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="emailid" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+          <Property Name="mobileno" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_AgeDataInput_Fleet">
+          <End Role="Fleet" Type="Self.Fleet" Multiplicity="0..1" />
+          <End Role="AgeDataInput" Type="Self.AgeDataInput" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fleet">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AgeDataInput">
+              <PropertyRef Name="fleetid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AgeDataInput_FleetAgeColours">
+          <End Role="FleetAgeColours" Type="Self.FleetAgeColours" Multiplicity="0..1" />
+          <End Role="AgeDataInput" Type="Self.AgeDataInput" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FleetAgeColours">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AgeDataInput">
+              <PropertyRef Name="colorid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AgeDataInput_FleetModel">
+          <End Role="FleetModel" Type="Self.FleetModel" Multiplicity="0..1" />
+          <End Role="AgeDataInput" Type="Self.AgeDataInput" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FleetModel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AgeDataInput">
+              <PropertyRef Name="fleetmodelid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipment_FleetModel">
+          <End Role="FleetModel" Type="Self.FleetModel" Multiplicity="0..1" />
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FleetModel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="fleetmodelid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FleetCostCenterMapping_CostCenters">
+          <End Role="CostCenters" Type="Self.CostCenters" Multiplicity="0..1" />
+          <End Role="FleetCostCenterMapping" Type="Self.FleetCostCenterMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CostCenters">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FleetCostCenterMapping">
+              <PropertyRef Name="costcenterid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FleetCostCenterMapping_Fleet">
+          <End Role="Fleet" Type="Self.Fleet" Multiplicity="0..1" />
+          <End Role="FleetCostCenterMapping" Type="Self.FleetCostCenterMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fleet">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FleetCostCenterMapping">
+              <PropertyRef Name="fleetied" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FleetModel_Fleet">
+          <End Role="Fleet" Type="Self.Fleet" Multiplicity="0..1" />
+          <End Role="FleetModel" Type="Self.FleetModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fleet">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FleetModel">
+              <PropertyRef Name="fleetid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FleetTransactions_CostCenters">
+          <End Role="CostCenters" Type="Self.CostCenters" Multiplicity="0..1" />
+          <End Role="FleetTransactions" Type="Self.FleetTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CostCenters">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FleetTransactions">
+              <PropertyRef Name="costcenterid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FleetTransactions_Equipment">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="0..1" />
+          <End Role="FleetTransactions" Type="Self.FleetTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FleetTransactions">
+              <PropertyRef Name="equipmentid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FleetTransactions_Fleet">
+          <End Role="Fleet" Type="Self.Fleet" Multiplicity="0..1" />
+          <End Role="FleetTransactions" Type="Self.FleetTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fleet">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FleetTransactions">
+              <PropertyRef Name="fleetid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FleetTransactions_FleetModel">
+          <End Role="FleetModel" Type="Self.FleetModel" Multiplicity="0..1" />
+          <End Role="FleetTransactions" Type="Self.FleetTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FleetModel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FleetTransactions">
+              <PropertyRef Name="fleetmodelid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LCMPModelStoreContainer">
+          <EntitySet Name="AgeDataInput" EntityType="Self.AgeDataInput" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CostCenters" EntityType="Self.CostCenters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fleet" EntityType="Self.Fleet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FleetAgeColours" EntityType="Self.FleetAgeColours" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FleetCostCenterMapping" EntityType="Self.FleetCostCenterMapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FleetModel" EntityType="Self.FleetModel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FleetTransactions" EntityType="Self.FleetTransactions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LubricantCost" EntityType="Self.LubricantCost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TyreCost" EntityType="Self.TyreCost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AgeDataInput_Fleet" Association="Self.FK_AgeDataInput_Fleet">
+            <End Role="Fleet" EntitySet="Fleet" />
+            <End Role="AgeDataInput" EntitySet="AgeDataInput" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AgeDataInput_FleetAgeColours" Association="Self.FK_AgeDataInput_FleetAgeColours">
+            <End Role="FleetAgeColours" EntitySet="FleetAgeColours" />
+            <End Role="AgeDataInput" EntitySet="AgeDataInput" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AgeDataInput_FleetModel" Association="Self.FK_AgeDataInput_FleetModel">
+            <End Role="FleetModel" EntitySet="FleetModel" />
+            <End Role="AgeDataInput" EntitySet="AgeDataInput" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipment_FleetModel" Association="Self.FK_Equipment_FleetModel">
+            <End Role="FleetModel" EntitySet="FleetModel" />
+            <End Role="Equipment" EntitySet="Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FleetCostCenterMapping_CostCenters" Association="Self.FK_FleetCostCenterMapping_CostCenters">
+            <End Role="CostCenters" EntitySet="CostCenters" />
+            <End Role="FleetCostCenterMapping" EntitySet="FleetCostCenterMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FleetCostCenterMapping_Fleet" Association="Self.FK_FleetCostCenterMapping_Fleet">
+            <End Role="Fleet" EntitySet="Fleet" />
+            <End Role="FleetCostCenterMapping" EntitySet="FleetCostCenterMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FleetModel_Fleet" Association="Self.FK_FleetModel_Fleet">
+            <End Role="Fleet" EntitySet="Fleet" />
+            <End Role="FleetModel" EntitySet="FleetModel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FleetTransactions_CostCenters" Association="Self.FK_FleetTransactions_CostCenters">
+            <End Role="CostCenters" EntitySet="CostCenters" />
+            <End Role="FleetTransactions" EntitySet="FleetTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FleetTransactions_Equipment" Association="Self.FK_FleetTransactions_Equipment">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="FleetTransactions" EntitySet="FleetTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FleetTransactions_Fleet" Association="Self.FK_FleetTransactions_Fleet">
+            <End Role="Fleet" EntitySet="Fleet" />
+            <End Role="FleetTransactions" EntitySet="FleetTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FleetTransactions_FleetModel" Association="Self.FK_FleetTransactions_FleetModel">
+            <End Role="FleetModel" EntitySet="FleetModel" />
+            <End Role="FleetTransactions" EntitySet="FleetTransactions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LCMPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AgeDataInput">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fleetmodelid" Type="Int32" />
+          <Property Name="colorid" Type="Int32" />
+          <Property Name="rangestart" Type="Int32" />
+          <Property Name="rangeend" Type="Int32" />
+          <Property Name="fleetid" Type="Int32" />
+          <NavigationProperty Name="Fleet" Relationship="Self.FK_AgeDataInput_Fleet" FromRole="AgeDataInput" ToRole="Fleet" />
+          <NavigationProperty Name="FleetAgeColours" Relationship="Self.FK_AgeDataInput_FleetAgeColours" FromRole="AgeDataInput" ToRole="FleetAgeColours" />
+          <NavigationProperty Name="FleetModel" Relationship="Self.FK_AgeDataInput_FleetModel" FromRole="AgeDataInput" ToRole="FleetModel" />
+        </EntityType>
+        <EntityType Name="CostCenters">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="elementid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FleetCostCenterMapping" Relationship="Self.FK_FleetCostCenterMapping_CostCenters" FromRole="CostCenters" ToRole="FleetCostCenterMapping" />
+          <NavigationProperty Name="FleetTransactions" Relationship="Self.FK_FleetTransactions_CostCenters" FromRole="CostCenters" ToRole="FleetTransactions" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fleetmodelid" Type="Int32" />
+          <NavigationProperty Name="FleetModel" Relationship="Self.FK_Equipment_FleetModel" FromRole="Equipment" ToRole="FleetModel" />
+          <NavigationProperty Name="FleetTransactions" Relationship="Self.FK_FleetTransactions_Equipment" FromRole="Equipment" ToRole="FleetTransactions" />
+        </EntityType>
+        <EntityType Name="Fleet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AgeDataInput" Relationship="Self.FK_AgeDataInput_Fleet" FromRole="Fleet" ToRole="AgeDataInput" />
+          <NavigationProperty Name="FleetCostCenterMapping" Relationship="Self.FK_FleetCostCenterMapping_Fleet" FromRole="Fleet" ToRole="FleetCostCenterMapping" />
+          <NavigationProperty Name="FleetModel" Relationship="Self.FK_FleetModel_Fleet" FromRole="Fleet" ToRole="FleetModel" />
+          <NavigationProperty Name="FleetTransactions" Relationship="Self.FK_FleetTransactions_Fleet" FromRole="Fleet" ToRole="FleetTransactions" />
+        </EntityType>
+        <EntityType Name="FleetAgeColours">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="colour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AgeDataInput" Relationship="Self.FK_AgeDataInput_FleetAgeColours" FromRole="FleetAgeColours" ToRole="AgeDataInput" />
+        </EntityType>
+        <EntityType Name="FleetCostCenterMapping">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="fleetied" Type="Int32" />
+          <Property Name="costcenterid" Type="Int32" />
+          <Property Name="count" Type="Int32" />
+          <NavigationProperty Name="CostCenters" Relationship="Self.FK_FleetCostCenterMapping_CostCenters" FromRole="FleetCostCenterMapping" ToRole="CostCenters" />
+          <NavigationProperty Name="Fleet" Relationship="Self.FK_FleetCostCenterMapping_Fleet" FromRole="FleetCostCenterMapping" ToRole="Fleet" />
+        </EntityType>
+        <EntityType Name="FleetModel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fleetid" Type="Int32" />
+          <NavigationProperty Name="AgeDataInput" Relationship="Self.FK_AgeDataInput_FleetModel" FromRole="FleetModel" ToRole="AgeDataInput" />
+          <NavigationProperty Name="Equipment" Relationship="Self.FK_Equipment_FleetModel" FromRole="FleetModel" ToRole="Equipment" />
+          <NavigationProperty Name="Fleet" Relationship="Self.FK_FleetModel_Fleet" FromRole="FleetModel" ToRole="Fleet" />
+          <NavigationProperty Name="FleetTransactions" Relationship="Self.FK_FleetTransactions_FleetModel" FromRole="FleetModel" ToRole="FleetTransactions" />
+        </EntityType>
+        <EntityType Name="FleetTransactions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fleetid" Type="Int32" />
+          <Property Name="fleetmodelid" Type="Int32" />
+          <Property Name="equipmentid" Type="Int32" />
+          <Property Name="costcenterid" Type="Int32" />
+          <Property Name="prontoplantnumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pmtasknumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nextdue" Type="Int32" />
+          <Property Name="activity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="currenthour" Type="Int32" />
+          <Property Name="oem" Type="Int32" />
+          <Property Name="frequency" Type="Int32" />
+          <Property Name="labourduration" Type="Int32" />
+          <Property Name="labourcost" Type="Int32" />
+          <Property Name="materialcost" Type="Int32" />
+          <Property Name="oilcapacity" Type="Int32" />
+          <Property Name="oilcost" Type="Int32" />
+          <Property Name="tyrescost" Type="Int32" />
+          <Property Name="totalcost" Type="Int32" />
+          <Property Name="lastchange" Type="Int32" />
+          <Property Name="downtime" Type="Int32" />
+          <NavigationProperty Name="CostCenters" Relationship="Self.FK_FleetTransactions_CostCenters" FromRole="FleetTransactions" ToRole="CostCenters" />
+          <NavigationProperty Name="Equipment" Relationship="Self.FK_FleetTransactions_Equipment" FromRole="FleetTransactions" ToRole="Equipment" />
+          <NavigationProperty Name="Fleet" Relationship="Self.FK_FleetTransactions_Fleet" FromRole="FleetTransactions" ToRole="Fleet" />
+          <NavigationProperty Name="FleetModel" Relationship="Self.FK_FleetTransactions_FleetModel" FromRole="FleetTransactions" ToRole="FleetModel" />
+        </EntityType>
+        <EntityType Name="LubricantCost">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="component" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="cost" Type="Double" />
+        </EntityType>
+        <EntityType Name="TyreCost">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="modelid" Type="Int32" />
+          <Property Name="specification" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="count" Type="Int32" />
+          <Property Name="life" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="emailid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mobileno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_AgeDataInput_Fleet">
+          <End Role="Fleet" Type="Self.Fleet" Multiplicity="0..1" />
+          <End Role="AgeDataInput" Type="Self.AgeDataInput" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fleet">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AgeDataInput">
+              <PropertyRef Name="fleetid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AgeDataInput_FleetAgeColours">
+          <End Role="FleetAgeColours" Type="Self.FleetAgeColours" Multiplicity="0..1" />
+          <End Role="AgeDataInput" Type="Self.AgeDataInput" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FleetAgeColours">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AgeDataInput">
+              <PropertyRef Name="colorid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AgeDataInput_FleetModel">
+          <End Role="FleetModel" Type="Self.FleetModel" Multiplicity="0..1" />
+          <End Role="AgeDataInput" Type="Self.AgeDataInput" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FleetModel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AgeDataInput">
+              <PropertyRef Name="fleetmodelid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FleetCostCenterMapping_CostCenters">
+          <End Role="CostCenters" Type="Self.CostCenters" Multiplicity="0..1" />
+          <End Role="FleetCostCenterMapping" Type="Self.FleetCostCenterMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CostCenters">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FleetCostCenterMapping">
+              <PropertyRef Name="costcenterid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FleetTransactions_CostCenters">
+          <End Role="CostCenters" Type="Self.CostCenters" Multiplicity="0..1" />
+          <End Role="FleetTransactions" Type="Self.FleetTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CostCenters">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FleetTransactions">
+              <PropertyRef Name="costcenterid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipment_FleetModel">
+          <End Role="FleetModel" Type="Self.FleetModel" Multiplicity="0..1" />
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FleetModel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="fleetmodelid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FleetTransactions_Equipment">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="0..1" />
+          <End Role="FleetTransactions" Type="Self.FleetTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FleetTransactions">
+              <PropertyRef Name="equipmentid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FleetCostCenterMapping_Fleet">
+          <End Role="Fleet" Type="Self.Fleet" Multiplicity="0..1" />
+          <End Role="FleetCostCenterMapping" Type="Self.FleetCostCenterMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fleet">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FleetCostCenterMapping">
+              <PropertyRef Name="fleetied" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FleetModel_Fleet">
+          <End Role="Fleet" Type="Self.Fleet" Multiplicity="0..1" />
+          <End Role="FleetModel" Type="Self.FleetModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fleet">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FleetModel">
+              <PropertyRef Name="fleetid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FleetTransactions_Fleet">
+          <End Role="Fleet" Type="Self.Fleet" Multiplicity="0..1" />
+          <End Role="FleetTransactions" Type="Self.FleetTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fleet">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FleetTransactions">
+              <PropertyRef Name="fleetid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FleetTransactions_FleetModel">
+          <End Role="FleetModel" Type="Self.FleetModel" Multiplicity="0..1" />
+          <End Role="FleetTransactions" Type="Self.FleetTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FleetModel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FleetTransactions">
+              <PropertyRef Name="fleetmodelid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LCMPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AgeDataInput" EntityType="Self.AgeDataInput" />
+          <EntitySet Name="CostCenters" EntityType="Self.CostCenters" />
+          <EntitySet Name="Equipment" EntityType="Self.Equipment" />
+          <EntitySet Name="Fleet" EntityType="Self.Fleet" />
+          <EntitySet Name="FleetAgeColours" EntityType="Self.FleetAgeColours" />
+          <EntitySet Name="FleetCostCenterMapping" EntityType="Self.FleetCostCenterMapping" />
+          <EntitySet Name="FleetModel" EntityType="Self.FleetModel" />
+          <EntitySet Name="FleetTransactions" EntityType="Self.FleetTransactions" />
+          <EntitySet Name="LubricantCost" EntityType="Self.LubricantCost" />
+          <EntitySet Name="TyreCost" EntityType="Self.TyreCost" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_AgeDataInput_Fleet" Association="Self.FK_AgeDataInput_Fleet">
+            <End Role="Fleet" EntitySet="Fleet" />
+            <End Role="AgeDataInput" EntitySet="AgeDataInput" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AgeDataInput_FleetAgeColours" Association="Self.FK_AgeDataInput_FleetAgeColours">
+            <End Role="FleetAgeColours" EntitySet="FleetAgeColours" />
+            <End Role="AgeDataInput" EntitySet="AgeDataInput" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AgeDataInput_FleetModel" Association="Self.FK_AgeDataInput_FleetModel">
+            <End Role="FleetModel" EntitySet="FleetModel" />
+            <End Role="AgeDataInput" EntitySet="AgeDataInput" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FleetCostCenterMapping_CostCenters" Association="Self.FK_FleetCostCenterMapping_CostCenters">
+            <End Role="CostCenters" EntitySet="CostCenters" />
+            <End Role="FleetCostCenterMapping" EntitySet="FleetCostCenterMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FleetTransactions_CostCenters" Association="Self.FK_FleetTransactions_CostCenters">
+            <End Role="CostCenters" EntitySet="CostCenters" />
+            <End Role="FleetTransactions" EntitySet="FleetTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipment_FleetModel" Association="Self.FK_Equipment_FleetModel">
+            <End Role="FleetModel" EntitySet="FleetModel" />
+            <End Role="Equipment" EntitySet="Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FleetTransactions_Equipment" Association="Self.FK_FleetTransactions_Equipment">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="FleetTransactions" EntitySet="FleetTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FleetCostCenterMapping_Fleet" Association="Self.FK_FleetCostCenterMapping_Fleet">
+            <End Role="Fleet" EntitySet="Fleet" />
+            <End Role="FleetCostCenterMapping" EntitySet="FleetCostCenterMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FleetModel_Fleet" Association="Self.FK_FleetModel_Fleet">
+            <End Role="Fleet" EntitySet="Fleet" />
+            <End Role="FleetModel" EntitySet="FleetModel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FleetTransactions_Fleet" Association="Self.FK_FleetTransactions_Fleet">
+            <End Role="Fleet" EntitySet="Fleet" />
+            <End Role="FleetTransactions" EntitySet="FleetTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FleetTransactions_FleetModel" Association="Self.FK_FleetTransactions_FleetModel">
+            <End Role="FleetModel" EntitySet="FleetModel" />
+            <End Role="FleetTransactions" EntitySet="FleetTransactions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LCMPModelStoreContainer" CdmEntityContainer="LCMPEntities">
+          <EntitySetMapping Name="AgeDataInput">
+            <EntityTypeMapping TypeName="LCMPModel.AgeDataInput">
+              <MappingFragment StoreEntitySet="AgeDataInput">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fleetmodelid" ColumnName="fleetmodelid" />
+                <ScalarProperty Name="colorid" ColumnName="colorid" />
+                <ScalarProperty Name="rangestart" ColumnName="rangestart" />
+                <ScalarProperty Name="rangeend" ColumnName="rangeend" />
+                <ScalarProperty Name="fleetid" ColumnName="fleetid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CostCenters">
+            <EntityTypeMapping TypeName="LCMPModel.CostCenters">
+              <MappingFragment StoreEntitySet="CostCenters">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="elementid" ColumnName="elementid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipment">
+            <EntityTypeMapping TypeName="LCMPModel.Equipment">
+              <MappingFragment StoreEntitySet="Equipment">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="fleetmodelid" ColumnName="fleetmodelid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fleet">
+            <EntityTypeMapping TypeName="LCMPModel.Fleet">
+              <MappingFragment StoreEntitySet="Fleet">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FleetAgeColours">
+            <EntityTypeMapping TypeName="LCMPModel.FleetAgeColours">
+              <MappingFragment StoreEntitySet="FleetAgeColours">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="colour" ColumnName="colour" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FleetCostCenterMapping">
+            <EntityTypeMapping TypeName="LCMPModel.FleetCostCenterMapping">
+              <MappingFragment StoreEntitySet="FleetCostCenterMapping">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fleetied" ColumnName="fleetied" />
+                <ScalarProperty Name="costcenterid" ColumnName="costcenterid" />
+                <ScalarProperty Name="count" ColumnName="count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FleetModel">
+            <EntityTypeMapping TypeName="LCMPModel.FleetModel">
+              <MappingFragment StoreEntitySet="FleetModel">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="fleetid" ColumnName="fleetid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FleetTransactions">
+            <EntityTypeMapping TypeName="LCMPModel.FleetTransactions">
+              <MappingFragment StoreEntitySet="FleetTransactions">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fleetid" ColumnName="fleetid" />
+                <ScalarProperty Name="fleetmodelid" ColumnName="fleetmodelid" />
+                <ScalarProperty Name="equipmentid" ColumnName="equipmentid" />
+                <ScalarProperty Name="costcenterid" ColumnName="costcenterid" />
+                <ScalarProperty Name="prontoplantnumber" ColumnName="prontoplantnumber" />
+                <ScalarProperty Name="pmtasknumber" ColumnName="pmtasknumber" />
+                <ScalarProperty Name="nextdue" ColumnName="nextdue" />
+                <ScalarProperty Name="activity" ColumnName="activity" />
+                <ScalarProperty Name="currenthour" ColumnName="currenthour" />
+                <ScalarProperty Name="oem" ColumnName="oem" />
+                <ScalarProperty Name="frequency" ColumnName="frequency" />
+                <ScalarProperty Name="labourduration" ColumnName="labourduration" />
+                <ScalarProperty Name="labourcost" ColumnName="labourcost" />
+                <ScalarProperty Name="materialcost" ColumnName="materialcost" />
+                <ScalarProperty Name="oilcapacity" ColumnName="oilcapacity" />
+                <ScalarProperty Name="oilcost" ColumnName="oilcost" />
+                <ScalarProperty Name="tyrescost" ColumnName="tyrescost" />
+                <ScalarProperty Name="totalcost" ColumnName="totalcost" />
+                <ScalarProperty Name="lastchange" ColumnName="lastchange" />
+                <ScalarProperty Name="downtime" ColumnName="downtime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LubricantCost">
+            <EntityTypeMapping TypeName="LCMPModel.LubricantCost">
+              <MappingFragment StoreEntitySet="LubricantCost">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="component" ColumnName="component" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TyreCost">
+            <EntityTypeMapping TypeName="LCMPModel.TyreCost">
+              <MappingFragment StoreEntitySet="TyreCost">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="modelid" ColumnName="modelid" />
+                <ScalarProperty Name="specification" ColumnName="specification" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="life" ColumnName="life" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="LCMPModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="emailid" ColumnName="emailid" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="mobileno" ColumnName="mobileno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
