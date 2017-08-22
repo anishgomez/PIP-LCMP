@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace PIP_LCMP.WebApi.Controllers
+namespace PIP_LCMP.Api.Controllers
 {
     [Authorize]
     public class ValuesController : ApiController

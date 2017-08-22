@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Newtonsoft.Json.Serialization;
 
-namespace PIP_LCMP.WebApi
+namespace PIP_LCMP.Api
 {
     public static class WebApiConfig
     {

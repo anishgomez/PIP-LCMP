@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace PIP_LCMP.WebApi.Areas.HelpPage.ModelDescriptions
+namespace PIP_LCMP.Api.Areas.HelpPage.ModelDescriptions
 {
     internal static class ModelNameHelper
     {

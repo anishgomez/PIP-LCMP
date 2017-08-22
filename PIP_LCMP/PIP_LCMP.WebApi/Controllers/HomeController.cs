@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace PIP_LCMP.WebApi.Controllers
+namespace PIP_LCMP.Api.Controllers
 {
     public class HomeController : Controller
     {

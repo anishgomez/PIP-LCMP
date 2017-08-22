@@ -1,4 +1,4 @@
-namespace PIP_LCMP.WebApi.Areas.HelpPage.ModelDescriptions
+namespace PIP_LCMP.Api.Areas.HelpPage.ModelDescriptions
 {
     public class DictionaryModelDescription : KeyValuePairModelDescription
     {

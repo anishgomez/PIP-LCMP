@@ -1,6 +1,6 @@
 using System;
 
-namespace PIP_LCMP.WebApi.Areas.HelpPage
+namespace PIP_LCMP.Api.Areas.HelpPage
 {
     /// <summary>
     /// This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.

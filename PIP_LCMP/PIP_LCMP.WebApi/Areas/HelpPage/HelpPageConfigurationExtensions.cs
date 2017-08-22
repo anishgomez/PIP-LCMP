@@ -11,10 +11,10 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using PIP_LCMP.WebApi.Areas.HelpPage.ModelDescriptions;
-using PIP_LCMP.WebApi.Areas.HelpPage.Models;
+using PIP_LCMP.Api.Areas.HelpPage.ModelDescriptions;
+using PIP_LCMP.Api.Areas.HelpPage.Models;
 
-namespace PIP_LCMP.WebApi.Areas.HelpPage
+namespace PIP_LCMP.Api.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {
