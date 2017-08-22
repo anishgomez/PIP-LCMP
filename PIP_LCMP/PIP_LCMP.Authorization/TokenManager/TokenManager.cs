@@ -56,7 +56,7 @@ namespace PIP_LCMP.Authorization.TokenManager
             try
             {
                 if (string.IsNullOrEmpty(token))
-                    throw new ArgumentNullException(Constants.TokenNullMessage);
+                    throw new ArgumentNullException(Constants.UnauthorizedMessage);
                 JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
                 JwtSecurityToken jwtRead = tokenHandler.ReadToken(token) as JwtSecurityToken;
                 var securityKey = GetBytes(Constants.JWTTokenSecurityKey);
@@ -92,7 +92,7 @@ namespace PIP_LCMP.Authorization.TokenManager
             try
             {
                 if (string.IsNullOrEmpty(token))
-                    throw new ArgumentNullException(Constants.TokenNullMessage);
+                    throw new ArgumentNullException(Constants.UnauthorizedMessage);
                 JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
                 JwtSecurityToken jwtRead = tokenHandler.ReadToken(token) as JwtSecurityToken;
                 var userId = jwtRead.Claims.SingleOrDefault(it => it.Type.Contains("UserId")).Value;

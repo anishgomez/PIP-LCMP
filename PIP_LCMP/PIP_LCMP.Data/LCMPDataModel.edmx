@@ -53,8 +53,8 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="fleetied" Type="int" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fleetid" Type="int" />
           <Property Name="costcenterid" Type="int" />
           <Property Name="count" Type="int" />
         </EntityType>
@@ -113,15 +113,15 @@
         </EntityType>
         <EntityType Name="Users">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="firstname" Type="nvarchar" MaxLength="50" />
-          <Property Name="lastname" Type="nvarchar" MaxLength="50" />
-          <Property Name="username" Type="nvarchar" MaxLength="50" />
-          <Property Name="emailid" Type="nvarchar" MaxLength="50" />
-          <Property Name="password" Type="nvarchar" MaxLength="50" />
-          <Property Name="mobileno" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_AgeDataInput_Fleet">
           <End Role="Fleet" Type="Self.Fleet" Multiplicity="0..1" />
@@ -191,7 +191,7 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="FleetCostCenterMapping">
-              <PropertyRef Name="fleetied" />
+              <PropertyRef Name="fleetid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -377,8 +377,8 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="fleetied" Type="Int32" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fleetid" Type="Int32" />
           <Property Name="costcenterid" Type="Int32" />
           <Property Name="count" Type="Int32" />
           <NavigationProperty Name="CostCenters" Relationship="Self.FK_FleetCostCenterMapping_CostCenters" FromRole="FleetCostCenterMapping" ToRole="CostCenters" />
@@ -447,15 +447,15 @@
         </EntityType>
         <EntityType Name="Users">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="emailid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="mobileno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_AgeDataInput_Fleet">
           <End Role="Fleet" Type="Self.Fleet" Multiplicity="0..1" />
@@ -549,7 +549,7 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="FleetCostCenterMapping">
-              <PropertyRef Name="fleetied" />
+              <PropertyRef Name="fleetid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -705,7 +705,7 @@
             <EntityTypeMapping TypeName="LCMPModel.FleetCostCenterMapping">
               <MappingFragment StoreEntitySet="FleetCostCenterMapping">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="fleetied" ColumnName="fleetied" />
+                <ScalarProperty Name="fleetid" ColumnName="fleetid" />
                 <ScalarProperty Name="costcenterid" ColumnName="costcenterid" />
                 <ScalarProperty Name="count" ColumnName="count" />
               </MappingFragment>
@@ -771,13 +771,13 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="LCMPModel.Users">
               <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="firstname" ColumnName="firstname" />
-                <ScalarProperty Name="lastname" ColumnName="lastname" />
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="emailid" ColumnName="emailid" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="mobileno" ColumnName="mobileno" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

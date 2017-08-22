@@ -1,4 +1,7 @@
-﻿using SimpleInjector;
+﻿using PIP_LCMP.Api.DI;
+using PIP_LCMP.Repositories.DI;
+using PIP_LCMP.Services.DI;
+using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
 using SimpleInjector.Lifestyles;
 using System;
@@ -18,6 +21,9 @@ namespace PIP_LCMP.Api
         {
             var container = new Container();
             container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
+            container.RegisterControllerDependencies();
+            container.RegisterBusinessServiceDependencies();
+            container.RegisterRepositoryDependencies();
 
             container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
             container.Verify();

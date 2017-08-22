@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SimpleInjector, Version=4.0.8.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.4.0.8\lib\net45\SimpleInjector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,7 +44,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\AccountService.cs" />
+    <Compile Include="Account\IAccountService.cs" />
+    <Compile Include="DI\DependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PIP_LCMP.Authorization\PIP_LCMP.Authorization.csproj">
+      <Project>{0783E73F-3EE4-41D5-983E-BA67BC413D5F}</Project>
+      <Name>PIP_LCMP.Authorization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PIP_LCMP.BusinessModel\PIP_LCMP.BusinessEntities.csproj">
+      <Project>{EBA4DB70-C19D-4601-8A0D-2FA8045CB961}</Project>
+      <Name>PIP_LCMP.BusinessEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PIP_LCMP.Repository\PIP_LCMP.Repositories.csproj">
+      <Project>{E548CC8A-7E13-4B10-BC94-A6D4E0F1C666}</Project>
+      <Name>PIP_LCMP.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PIP_LCMP.Utilities\PIP_LCMP.Utilities.csproj">
+      <Project>{4029219E-A04E-46FF-A8C0-60A01C7C8371}</Project>
+      <Name>PIP_LCMP.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

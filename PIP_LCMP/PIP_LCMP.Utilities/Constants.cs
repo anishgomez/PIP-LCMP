@@ -10,7 +10,8 @@ namespace PIP_LCMP.Utilities
     {
         public const string JWTTokenIssuer = "PartnersInPerfomance";
         public const string JWTTokenSecurityKey = "JWTTokenKey";
-        public const string TokenNullMessage = "You are not authorized to access this page";
+        public const string UnauthorizedMessage = "You are not authorized to access this page";
         public const int TokenExpiry = 240;
+        public const string InvalidLogin = "Username/Password doesnot match";
     }
 }

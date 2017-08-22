@@ -102,32 +102,30 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="LCMPDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>LCMPDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
     <None Include="LCMPDataModel.edmx.diagram">
       <DependentUpon>LCMPDataModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="LCMPDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>LCMPDataModel.Context.cs</LastGenOutput>
       <DependentUpon>LCMPDataModel.edmx</DependentUpon>
+      <LastGenOutput>LCMPDataModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="LCMPDataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>LCMPDataModel.edmx</DependentUpon>
       <LastGenOutput>LCMPDataModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
