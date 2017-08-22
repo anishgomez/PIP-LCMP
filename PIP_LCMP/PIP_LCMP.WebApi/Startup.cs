@@ -12,7 +12,7 @@ namespace PIP_LCMP.WebApi
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
+            ConfigureAuth(app); 
         }
     }
 }
