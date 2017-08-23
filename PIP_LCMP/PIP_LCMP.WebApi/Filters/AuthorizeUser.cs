@@ -6,10 +6,10 @@ using System.Web.Http.Controllers;
 
 namespace PIP_LCMP.Api.Filters
 {
-    public class CustomAuthorize : AuthorizeAttribute
+    public class AuthorizeUser : AuthorizeAttribute
     {
         private ITokenManager _tokenManager;
-        public CustomAuthorize()
+        public AuthorizeUser()
         {
 
         }

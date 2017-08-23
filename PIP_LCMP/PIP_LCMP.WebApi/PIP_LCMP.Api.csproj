@@ -218,7 +218,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DI\DependencyResolver.cs" />
-    <Compile Include="Filters\CustomAuthorize.cs" />
+    <Compile Include="Filters\AuthorizeUser.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

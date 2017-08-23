@@ -1,4 +1,5 @@
-﻿using PIP_LCMP.Services.Fleet;
+﻿using PIP_LCMP.Api.Filters;
+using PIP_LCMP.Services.Fleet;
 using PIP_LCMP.Utilities;
 using System.Web.Http;
 
@@ -12,7 +13,8 @@ namespace PIP_LCMP.Api.Controllers
         {
             _fleetService = fleetService;
         }
-        [Authorize]
+
+        [AuthorizeUser]
         [HttpGet]
         [Route("GetAllFleets")]
         public IHttpActionResult GetAllFleets()
