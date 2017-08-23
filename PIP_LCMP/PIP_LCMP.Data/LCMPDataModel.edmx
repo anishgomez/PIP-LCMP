@@ -27,11 +27,16 @@
         </EntityType>
         <EntityType Name="Equipment">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="50" />
-          <Property Name="fleetmodelid" Type="int" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FleetModelId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Fleet">
           <Key>
@@ -171,14 +176,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Equipment_FleetModel">
-          <End Role="FleetModel" Type="Self.FleetModel" Multiplicity="0..1" />
+          <End Role="FleetModel" Type="Self.FleetModel" Multiplicity="1" />
           <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FleetModel">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Equipment">
-              <PropertyRef Name="fleetmodelid" />
+              <PropertyRef Name="FleetModelId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -283,7 +288,7 @@
           <End Role="FleetTransactions" Type="Self.FleetTransactions" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Equipment">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FleetTransactions">
               <PropertyRef Name="equipmentid" />
@@ -419,11 +424,16 @@
         </EntityType>
         <EntityType Name="Equipment">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="fleetmodelid" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FleetModelId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="FleetModel" Relationship="Self.FK_Equipment_FleetModel" FromRole="Equipment" ToRole="FleetModel" />
           <NavigationProperty Name="FleetTransactions" Relationship="Self.FK_FleetTransactions_Equipment" FromRole="Equipment" ToRole="FleetTransactions" />
         </EntityType>
@@ -612,14 +622,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Equipment_FleetModel">
-          <End Role="FleetModel" Type="Self.FleetModel" Multiplicity="0..1" />
+          <End Role="FleetModel" Type="Self.FleetModel" Multiplicity="1" />
           <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FleetModel">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Equipment">
-              <PropertyRef Name="fleetmodelid" />
+              <PropertyRef Name="FleetModelId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -628,7 +638,7 @@
           <End Role="FleetTransactions" Type="Self.FleetTransactions" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Equipment">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FleetTransactions">
               <PropertyRef Name="equipmentid" />
@@ -835,9 +845,14 @@
           <EntitySetMapping Name="Equipment">
             <EntityTypeMapping TypeName="LCMPModel.Equipment">
               <MappingFragment StoreEntitySet="Equipment">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="fleetmodelid" ColumnName="fleetmodelid" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FleetModelId" ColumnName="FleetModelId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

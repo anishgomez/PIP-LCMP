@@ -4,10 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1e799fc011e94145b50216ffe9ca8b0d" Name="Diagram1">
+      <Diagram DiagramId="db54076e3e47440dbc5a80fe186b07de" Name="Diagram1">
         <EntityTypeShape EntityType="LCMPModel.AgeDataInput" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="LCMPModel.CostCenters" Width="1.5" PointX="10.5" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="LCMPModel.Equipment" Width="1.5" PointX="10.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMPModel.CostCenters" Width="1.5" PointX="10.5" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMPModel.Equipment" Width="1.5" PointX="10.5" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="LCMPModel.Fleet" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LCMPModel.FleetAgeColours" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="LCMPModel.FleetCostCenterMapping" Width="1.5" PointX="8.25" PointY="6.5" IsExpanded="true" />
