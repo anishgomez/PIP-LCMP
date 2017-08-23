@@ -13,5 +13,6 @@ namespace PIP_LCMP.Utilities
         public const string UnauthorizedMessage = "You are not authorized to access this page";
         public const int TokenExpiry = 240;
         public const string InvalidLogin = "Username/Password doesnot match";
+        public const string NoFleets = "No fleets found";
     }
 }
