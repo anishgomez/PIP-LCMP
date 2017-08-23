@@ -47,6 +47,8 @@
     <Compile Include="Account\AccountService.cs" />
     <Compile Include="Account\IAccountService.cs" />
     <Compile Include="DI\DependencyResolver.cs" />
+    <Compile Include="FleetModel\FleetModelService.cs" />
+    <Compile Include="FleetModel\IFleetModelService.cs" />
     <Compile Include="Fleet\FleetService.cs" />
     <Compile Include="Fleet\IFleetService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

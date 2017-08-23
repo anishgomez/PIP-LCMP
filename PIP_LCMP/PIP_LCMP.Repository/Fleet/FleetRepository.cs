@@ -15,17 +15,17 @@ namespace PIP_LCMP.Repositories.Fleet
             : base(dbContextProvider)
         {
             var config = new MapperConfiguration(cfg =>
-            cfg.CreateMap<DataEntities.Fleet, FleetModel>()
+            cfg.CreateMap<DataEntities.Fleet, BusinessEntities.Fleet.FleetModel>()
            );
             _mapper = config.CreateMapper();
         }
 
-        public ICollection<FleetModel> GetAllFleet()
+        public ICollection<BusinessEntities.Fleet.FleetModel> GetAllFleet()
         {
             Expression<Func<DataEntities.Fleet, bool>> predicate = (it => it.IsActive);
             var fleets = GetAll(predicate).ToList();
-            if (fleets != null)
-                return _mapper.Map<List<DataEntities.Fleet>, List<FleetModel>>(fleets);
+            if (fleets.Count > 0)
+                return _mapper.Map<List<DataEntities.Fleet>, List<BusinessEntities.Fleet.FleetModel>>(fleets);
             return null;
         }
     }

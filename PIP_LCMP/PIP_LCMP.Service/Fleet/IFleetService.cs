@@ -1,14 +1,9 @@
-﻿using PIP_LCMP.BusinessEntities.Fleet;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace PIP_LCMP.Services.Fleet
 {
     public interface IFleetService
     {
-        ICollection<FleetModel> GetFleets();
+        ICollection<BusinessEntities.Fleet.FleetModel> GetFleets();
     }
 }

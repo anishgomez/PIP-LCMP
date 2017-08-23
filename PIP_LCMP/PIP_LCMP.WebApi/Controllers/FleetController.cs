@@ -16,7 +16,7 @@ namespace PIP_LCMP.Api.Controllers
 
         [AuthorizeUser]
         [HttpGet]
-        [Route("GetAllFleets")]
+        [Route("getAllFleets")]
         public IHttpActionResult GetAllFleets()
         {
             var fleets = _fleetService.GetFleets();

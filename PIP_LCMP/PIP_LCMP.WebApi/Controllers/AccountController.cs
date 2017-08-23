@@ -15,7 +15,7 @@ namespace PIP_LCMP.Api.Controllers
         }
         [AllowAnonymous]
         [HttpPost]
-        [Route("Login")]
+        [Route("login")]
         public IHttpActionResult Login(LoginRequestModel loginModel)
         {
 

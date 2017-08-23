@@ -1,5 +1,6 @@
 ﻿using PIP_LCMP.Services.Account;
 using PIP_LCMP.Services.Fleet;
+using PIP_LCMP.Services.FleetModel;
 using SimpleInjector;
 
 namespace PIP_LCMP.Api.DI
@@ -10,6 +11,7 @@ namespace PIP_LCMP.Api.DI
         {
             container.Register<IAccountService, AccountService>(Lifestyle.Scoped);
             container.Register<IFleetService, FleetService>(Lifestyle.Scoped);
+            container.Register<IFleetModelService, FleetModelService>(Lifestyle.Scoped);
         }
     }
 }

@@ -5,6 +5,6 @@ namespace PIP_LCMP.Repositories.Fleet
 {
     public interface IFleetRepository
     {
-        ICollection<FleetModel> GetAllFleet();
+        ICollection<BusinessEntities.Fleet.FleetModel> GetAllFleet();
     }
 }

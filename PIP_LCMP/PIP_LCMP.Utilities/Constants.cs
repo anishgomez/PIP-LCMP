@@ -14,5 +14,6 @@ namespace PIP_LCMP.Utilities
         public const int TokenExpiry = 240;
         public const string InvalidLogin = "Username/Password doesnot match";
         public const string NoFleets = "No fleets found";
+        public const string NoFleetModels = "No fleet models found";
     }
 }
