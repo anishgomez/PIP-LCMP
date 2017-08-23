@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PIP_LCMP.Repositories.User
 {
-    public interface IUserRepository : IRepository<Users>
+    public interface IUserRepository
     {
         UserModel AuthenticateUser(LoginRequestModel loginModel);
     }

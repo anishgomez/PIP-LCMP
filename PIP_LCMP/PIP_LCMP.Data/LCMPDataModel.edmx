@@ -35,11 +35,16 @@
         </EntityType>
         <EntityType Name="Fleet">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="50" />
-          <Property Name="description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="FleetAgeColours">
           <Key>
@@ -60,11 +65,17 @@
         </EntityType>
         <EntityType Name="FleetModel">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="50" />
-          <Property Name="fleetid" Type="int" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="FleetId" Type="int" />
+          <Property Name="SMUHours" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedBy" Type="int" />
         </EntityType>
         <EntityType Name="FleetTransactions">
           <Key>
@@ -75,10 +86,10 @@
           <Property Name="fleetmodelid" Type="int" />
           <Property Name="equipmentid" Type="int" />
           <Property Name="costcenterid" Type="int" />
-          <Property Name="prontoplantnumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="prontoplantnumber" Type="nvarchar" MaxLength="500" />
           <Property Name="pmtasknumber" Type="nvarchar" MaxLength="50" />
           <Property Name="nextdue" Type="int" />
-          <Property Name="activity" Type="nvarchar" MaxLength="50" />
+          <Property Name="activity" Type="nvarchar" MaxLength="500" />
           <Property Name="currenthour" Type="int" />
           <Property Name="oem" Type="int" />
           <Property Name="frequency" Type="int" />
@@ -128,7 +139,7 @@
           <End Role="AgeDataInput" Type="Self.AgeDataInput" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Fleet">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="AgeDataInput">
               <PropertyRef Name="fleetid" />
@@ -152,7 +163,7 @@
           <End Role="AgeDataInput" Type="Self.AgeDataInput" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FleetModel">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="AgeDataInput">
               <PropertyRef Name="fleetmodelid" />
@@ -164,10 +175,34 @@
           <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FleetModel">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Equipment">
               <PropertyRef Name="fleetmodelid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fleet_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Fleet" Type="Self.Fleet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Fleet">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fleet_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Fleet" Type="Self.Fleet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Fleet">
+              <PropertyRef Name="UpdatedBy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -188,7 +223,7 @@
           <End Role="FleetCostCenterMapping" Type="Self.FleetCostCenterMapping" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Fleet">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FleetCostCenterMapping">
               <PropertyRef Name="fleetid" />
@@ -200,10 +235,34 @@
           <End Role="FleetModel" Type="Self.FleetModel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Fleet">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FleetModel">
-              <PropertyRef Name="fleetid" />
+              <PropertyRef Name="FleetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FleetModel_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="FleetModel" Type="Self.FleetModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FleetModel">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FleetModel_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="FleetModel" Type="Self.FleetModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FleetModel">
+              <PropertyRef Name="UpdatedBy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -236,7 +295,7 @@
           <End Role="FleetTransactions" Type="Self.FleetTransactions" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Fleet">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FleetTransactions">
               <PropertyRef Name="fleetid" />
@@ -248,7 +307,7 @@
           <End Role="FleetTransactions" Type="Self.FleetTransactions" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FleetModel">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FleetTransactions">
               <PropertyRef Name="fleetmodelid" />
@@ -283,6 +342,14 @@
             <End Role="FleetModel" EntitySet="FleetModel" />
             <End Role="Equipment" EntitySet="Equipment" />
           </AssociationSet>
+          <AssociationSet Name="FK_Fleet_Users" Association="Self.FK_Fleet_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Fleet" EntitySet="Fleet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fleet_Users1" Association="Self.FK_Fleet_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Fleet" EntitySet="Fleet" />
+          </AssociationSet>
           <AssociationSet Name="FK_FleetCostCenterMapping_CostCenters" Association="Self.FK_FleetCostCenterMapping_CostCenters">
             <End Role="CostCenters" EntitySet="CostCenters" />
             <End Role="FleetCostCenterMapping" EntitySet="FleetCostCenterMapping" />
@@ -293,6 +360,14 @@
           </AssociationSet>
           <AssociationSet Name="FK_FleetModel_Fleet" Association="Self.FK_FleetModel_Fleet">
             <End Role="Fleet" EntitySet="Fleet" />
+            <End Role="FleetModel" EntitySet="FleetModel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FleetModel_Users" Association="Self.FK_FleetModel_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="FleetModel" EntitySet="FleetModel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FleetModel_Users1" Association="Self.FK_FleetModel_Users1">
+            <End Role="Users" EntitySet="Users" />
             <End Role="FleetModel" EntitySet="FleetModel" />
           </AssociationSet>
           <AssociationSet Name="FK_FleetTransactions_CostCenters" Association="Self.FK_FleetTransactions_CostCenters">
@@ -354,12 +429,19 @@
         </EntityType>
         <EntityType Name="Fleet">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="AgeDataInput" Relationship="Self.FK_AgeDataInput_Fleet" FromRole="Fleet" ToRole="AgeDataInput" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Fleet_Users" FromRole="Fleet" ToRole="Users" />
+          <NavigationProperty Name="Users1" Relationship="Self.FK_Fleet_Users1" FromRole="Fleet" ToRole="Users" />
           <NavigationProperty Name="FleetCostCenterMapping" Relationship="Self.FK_FleetCostCenterMapping_Fleet" FromRole="Fleet" ToRole="FleetCostCenterMapping" />
           <NavigationProperty Name="FleetModel" Relationship="Self.FK_FleetModel_Fleet" FromRole="Fleet" ToRole="FleetModel" />
           <NavigationProperty Name="FleetTransactions" Relationship="Self.FK_FleetTransactions_Fleet" FromRole="Fleet" ToRole="FleetTransactions" />
@@ -386,14 +468,22 @@
         </EntityType>
         <EntityType Name="FleetModel">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="fleetid" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FleetId" Type="Int32" />
+          <Property Name="SMUHours" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="UpdatedBy" Type="Int32" />
           <NavigationProperty Name="AgeDataInput" Relationship="Self.FK_AgeDataInput_FleetModel" FromRole="FleetModel" ToRole="AgeDataInput" />
           <NavigationProperty Name="Equipment" Relationship="Self.FK_Equipment_FleetModel" FromRole="FleetModel" ToRole="Equipment" />
           <NavigationProperty Name="Fleet" Relationship="Self.FK_FleetModel_Fleet" FromRole="FleetModel" ToRole="Fleet" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_FleetModel_Users" FromRole="FleetModel" ToRole="Users" />
+          <NavigationProperty Name="Users1" Relationship="Self.FK_FleetModel_Users1" FromRole="FleetModel" ToRole="Users" />
           <NavigationProperty Name="FleetTransactions" Relationship="Self.FK_FleetTransactions_FleetModel" FromRole="FleetModel" ToRole="FleetTransactions" />
         </EntityType>
         <EntityType Name="FleetTransactions">
@@ -405,10 +495,10 @@
           <Property Name="fleetmodelid" Type="Int32" />
           <Property Name="equipmentid" Type="Int32" />
           <Property Name="costcenterid" Type="Int32" />
-          <Property Name="prontoplantnumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="prontoplantnumber" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="pmtasknumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="nextdue" Type="Int32" />
-          <Property Name="activity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="activity" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="currenthour" Type="Int32" />
           <Property Name="oem" Type="Int32" />
           <Property Name="frequency" Type="Int32" />
@@ -456,13 +546,17 @@
           <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Fleet" Relationship="Self.FK_Fleet_Users" FromRole="Users" ToRole="Fleet" />
+          <NavigationProperty Name="Fleet1" Relationship="Self.FK_Fleet_Users1" FromRole="Users" ToRole="Fleet" />
+          <NavigationProperty Name="FleetModel" Relationship="Self.FK_FleetModel_Users" FromRole="Users" ToRole="FleetModel" />
+          <NavigationProperty Name="FleetModel1" Relationship="Self.FK_FleetModel_Users1" FromRole="Users" ToRole="FleetModel" />
         </EntityType>
         <Association Name="FK_AgeDataInput_Fleet">
           <End Role="Fleet" Type="Self.Fleet" Multiplicity="0..1" />
           <End Role="AgeDataInput" Type="Self.AgeDataInput" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Fleet">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="AgeDataInput">
               <PropertyRef Name="fleetid" />
@@ -486,7 +580,7 @@
           <End Role="AgeDataInput" Type="Self.AgeDataInput" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FleetModel">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="AgeDataInput">
               <PropertyRef Name="fleetmodelid" />
@@ -522,7 +616,7 @@
           <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FleetModel">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Equipment">
               <PropertyRef Name="fleetmodelid" />
@@ -541,12 +635,36 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Fleet_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Fleet" Type="Self.Fleet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Fleet">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fleet_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Fleet" Type="Self.Fleet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Fleet">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_FleetCostCenterMapping_Fleet">
           <End Role="Fleet" Type="Self.Fleet" Multiplicity="0..1" />
           <End Role="FleetCostCenterMapping" Type="Self.FleetCostCenterMapping" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Fleet">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FleetCostCenterMapping">
               <PropertyRef Name="fleetid" />
@@ -558,10 +676,10 @@
           <End Role="FleetModel" Type="Self.FleetModel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Fleet">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FleetModel">
-              <PropertyRef Name="fleetid" />
+              <PropertyRef Name="FleetId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -570,10 +688,34 @@
           <End Role="FleetTransactions" Type="Self.FleetTransactions" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Fleet">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FleetTransactions">
               <PropertyRef Name="fleetid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FleetModel_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="FleetModel" Type="Self.FleetModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FleetModel">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FleetModel_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="FleetModel" Type="Self.FleetModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FleetModel">
+              <PropertyRef Name="UpdatedBy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -582,7 +724,7 @@
           <End Role="FleetTransactions" Type="Self.FleetTransactions" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FleetModel">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FleetTransactions">
               <PropertyRef Name="fleetmodelid" />
@@ -629,6 +771,14 @@
             <End Role="Equipment" EntitySet="Equipment" />
             <End Role="FleetTransactions" EntitySet="FleetTransactions" />
           </AssociationSet>
+          <AssociationSet Name="FK_Fleet_Users" Association="Self.FK_Fleet_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Fleet" EntitySet="Fleet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fleet_Users1" Association="Self.FK_Fleet_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Fleet" EntitySet="Fleet" />
+          </AssociationSet>
           <AssociationSet Name="FK_FleetCostCenterMapping_Fleet" Association="Self.FK_FleetCostCenterMapping_Fleet">
             <End Role="Fleet" EntitySet="Fleet" />
             <End Role="FleetCostCenterMapping" EntitySet="FleetCostCenterMapping" />
@@ -640,6 +790,14 @@
           <AssociationSet Name="FK_FleetTransactions_Fleet" Association="Self.FK_FleetTransactions_Fleet">
             <End Role="Fleet" EntitySet="Fleet" />
             <End Role="FleetTransactions" EntitySet="FleetTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FleetModel_Users" Association="Self.FK_FleetModel_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="FleetModel" EntitySet="FleetModel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FleetModel_Users1" Association="Self.FK_FleetModel_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="FleetModel" EntitySet="FleetModel" />
           </AssociationSet>
           <AssociationSet Name="FK_FleetTransactions_FleetModel" Association="Self.FK_FleetTransactions_FleetModel">
             <End Role="FleetModel" EntitySet="FleetModel" />
@@ -686,9 +844,14 @@
           <EntitySetMapping Name="Fleet">
             <EntityTypeMapping TypeName="LCMPModel.Fleet">
               <MappingFragment StoreEntitySet="Fleet">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -714,9 +877,15 @@
           <EntitySetMapping Name="FleetModel">
             <EntityTypeMapping TypeName="LCMPModel.FleetModel">
               <MappingFragment StoreEntitySet="FleetModel">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="fleetid" ColumnName="fleetid" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FleetId" ColumnName="FleetId" />
+                <ScalarProperty Name="SMUHours" ColumnName="SMUHours" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
