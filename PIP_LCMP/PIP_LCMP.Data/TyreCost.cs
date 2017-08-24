@@ -15,10 +15,10 @@ namespace PIP_LCMP.DataEntities
     public partial class TyreCost
     {
         public int id { get; set; }
-        public Nullable<int> modelid { get; set; }
-        public string specification { get; set; }
-        public Nullable<int> price { get; set; }
-        public Nullable<int> count { get; set; }
-        public Nullable<int> life { get; set; }
+        public int ModelId { get; set; }
+        public string Specification { get; set; }
+        public int Price { get; set; }
+        public int Count { get; set; }
+        public int Life { get; set; }
     }
 }

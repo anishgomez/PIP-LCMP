@@ -21,10 +21,11 @@ namespace PIP_LCMP.DataEntities
             this.FleetTransactions = new HashSet<FleetTransactions>();
         }
     
-        public int id { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
-        public string elementid { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string ElementId { get; set; }
+        public Nullable<int> Priority { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FleetCostCenterMapping> FleetCostCenterMapping { get; set; }

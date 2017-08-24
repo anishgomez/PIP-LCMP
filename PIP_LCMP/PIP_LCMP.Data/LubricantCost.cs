@@ -14,8 +14,8 @@ namespace PIP_LCMP.DataEntities
     
     public partial class LubricantCost
     {
-        public int id { get; set; }
-        public string component { get; set; }
-        public Nullable<double> cost { get; set; }
+        public int Id { get; set; }
+        public string Component { get; set; }
+        public double Cost { get; set; }
     }
 }

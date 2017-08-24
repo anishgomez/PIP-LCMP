@@ -14,12 +14,12 @@ namespace PIP_LCMP.DataEntities
     
     public partial class AgeDataInput
     {
-        public int id { get; set; }
-        public Nullable<int> fleetmodelid { get; set; }
-        public Nullable<int> colorid { get; set; }
-        public Nullable<int> rangestart { get; set; }
-        public Nullable<int> rangeend { get; set; }
-        public Nullable<int> fleetid { get; set; }
+        public int Id { get; set; }
+        public int FleetModelId { get; set; }
+        public int ColorId { get; set; }
+        public int RangeStart { get; set; }
+        public int RangeEnd { get; set; }
+        public int FleetId { get; set; }
     
         public virtual Fleet Fleet { get; set; }
         public virtual FleetAgeColours FleetAgeColours { get; set; }

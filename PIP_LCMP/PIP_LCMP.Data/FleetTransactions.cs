@@ -14,27 +14,27 @@ namespace PIP_LCMP.DataEntities
     
     public partial class FleetTransactions
     {
-        public int id { get; set; }
-        public Nullable<int> fleetid { get; set; }
-        public Nullable<int> fleetmodelid { get; set; }
-        public Nullable<int> equipmentid { get; set; }
-        public Nullable<int> costcenterid { get; set; }
-        public string prontoplantnumber { get; set; }
-        public string pmtasknumber { get; set; }
-        public Nullable<int> nextdue { get; set; }
-        public string activity { get; set; }
-        public Nullable<int> currenthour { get; set; }
-        public Nullable<int> oem { get; set; }
-        public Nullable<int> frequency { get; set; }
-        public Nullable<int> labourduration { get; set; }
-        public Nullable<int> labourcost { get; set; }
-        public Nullable<int> materialcost { get; set; }
-        public Nullable<int> oilcapacity { get; set; }
-        public Nullable<int> oilcost { get; set; }
-        public Nullable<int> tyrescost { get; set; }
-        public Nullable<int> totalcost { get; set; }
-        public Nullable<int> lastchange { get; set; }
-        public Nullable<int> downtime { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> FleetId { get; set; }
+        public Nullable<int> FleetModelId { get; set; }
+        public Nullable<int> EquipmentId { get; set; }
+        public Nullable<int> CostCenterId { get; set; }
+        public string ProntoPlantNumber { get; set; }
+        public string PMTaskNumber { get; set; }
+        public Nullable<int> NextDue { get; set; }
+        public string Activity { get; set; }
+        public Nullable<int> CurrentHour { get; set; }
+        public Nullable<int> OEM { get; set; }
+        public Nullable<int> Frequency { get; set; }
+        public Nullable<int> LabourDuration { get; set; }
+        public Nullable<int> LabourCost { get; set; }
+        public Nullable<int> MaterialCost { get; set; }
+        public Nullable<int> OilCapacity { get; set; }
+        public Nullable<int> OilCost { get; set; }
+        public Nullable<int> TyreCost { get; set; }
+        public Nullable<int> TotalCost { get; set; }
+        public Nullable<int> LastChange { get; set; }
+        public Nullable<int> Downtime { get; set; }
     
         public virtual CostCenters CostCenters { get; set; }
         public virtual Equipment Equipment { get; set; }

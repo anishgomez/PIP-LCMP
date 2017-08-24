@@ -14,10 +14,10 @@ namespace PIP_LCMP.DataEntities
     
     public partial class FleetCostCenterMapping
     {
-        public int id { get; set; }
-        public Nullable<int> fleetid { get; set; }
-        public Nullable<int> costcenterid { get; set; }
-        public Nullable<int> count { get; set; }
+        public int Id { get; set; }
+        public int FleetId { get; set; }
+        public int CostCenterId { get; set; }
+        public int Count { get; set; }
     
         public virtual CostCenters CostCenters { get; set; }
         public virtual Fleet Fleet { get; set; }

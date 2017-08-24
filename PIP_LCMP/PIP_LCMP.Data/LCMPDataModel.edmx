@@ -7,23 +7,24 @@
       <Schema Namespace="LCMPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AgeDataInput">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="fleetmodelid" Type="int" />
-          <Property Name="colorid" Type="int" />
-          <Property Name="rangestart" Type="int" />
-          <Property Name="rangeend" Type="int" />
-          <Property Name="fleetid" Type="int" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FleetModelId" Type="int" Nullable="false" />
+          <Property Name="ColorId" Type="int" Nullable="false" />
+          <Property Name="RangeStart" Type="int" Nullable="false" />
+          <Property Name="RangeEnd" Type="int" Nullable="false" />
+          <Property Name="FleetId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="CostCenters">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="50" />
-          <Property Name="description" Type="nvarchar" MaxLength="500" />
-          <Property Name="elementid" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="ElementId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Priority" Type="int" />
         </EntityType>
         <EntityType Name="Equipment">
           <Key>
@@ -35,8 +36,8 @@
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="UpdatedBy" Type="int" Nullable="false" />
-          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
-          <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Fleet">
           <Key>
@@ -48,25 +49,25 @@
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="UpdatedBy" Type="int" Nullable="false" />
-          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
-          <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="FleetAgeColours">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="colour" Type="nvarchar" MaxLength="50" />
-          <Property Name="description" Type="nvarchar" MaxLength="50" />
+          <Property Name="Colour" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="FleetCostCenterMapping">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="fleetid" Type="int" />
-          <Property Name="costcenterid" Type="int" />
-          <Property Name="count" Type="int" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FleetId" Type="int" Nullable="false" />
+          <Property Name="CostCenterId" Type="int" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="FleetModel">
           <Key>
@@ -84,48 +85,48 @@
         </EntityType>
         <EntityType Name="FleetTransactions">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="fleetid" Type="int" />
-          <Property Name="fleetmodelid" Type="int" />
-          <Property Name="equipmentid" Type="int" />
-          <Property Name="costcenterid" Type="int" />
-          <Property Name="prontoplantnumber" Type="nvarchar" MaxLength="500" />
-          <Property Name="pmtasknumber" Type="nvarchar" MaxLength="50" />
-          <Property Name="nextdue" Type="int" />
-          <Property Name="activity" Type="nvarchar" MaxLength="500" />
-          <Property Name="currenthour" Type="int" />
-          <Property Name="oem" Type="int" />
-          <Property Name="frequency" Type="int" />
-          <Property Name="labourduration" Type="int" />
-          <Property Name="labourcost" Type="int" />
-          <Property Name="materialcost" Type="int" />
-          <Property Name="oilcapacity" Type="int" />
-          <Property Name="oilcost" Type="int" />
-          <Property Name="tyrescost" Type="int" />
-          <Property Name="totalcost" Type="int" />
-          <Property Name="lastchange" Type="int" />
-          <Property Name="downtime" Type="int" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FleetId" Type="int" />
+          <Property Name="FleetModelId" Type="int" />
+          <Property Name="EquipmentId" Type="int" />
+          <Property Name="CostCenterId" Type="int" />
+          <Property Name="ProntoPlantNumber" Type="nvarchar" MaxLength="500" />
+          <Property Name="PMTaskNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="NextDue" Type="int" />
+          <Property Name="Activity" Type="nvarchar" MaxLength="500" />
+          <Property Name="CurrentHour" Type="int" />
+          <Property Name="OEM" Type="int" />
+          <Property Name="Frequency" Type="int" />
+          <Property Name="LabourDuration" Type="int" />
+          <Property Name="LabourCost" Type="int" />
+          <Property Name="MaterialCost" Type="int" />
+          <Property Name="OilCapacity" Type="int" />
+          <Property Name="OilCost" Type="int" />
+          <Property Name="TyreCost" Type="int" />
+          <Property Name="TotalCost" Type="int" />
+          <Property Name="LastChange" Type="int" />
+          <Property Name="Downtime" Type="int" />
         </EntityType>
         <EntityType Name="LubricantCost">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="component" Type="nvarchar" MaxLength="250" />
-          <Property Name="cost" Type="float" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Component" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Cost" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="TyreCost">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="modelid" Type="int" />
-          <Property Name="specification" Type="nvarchar" MaxLength="150" />
-          <Property Name="price" Type="int" />
-          <Property Name="count" Type="int" />
-          <Property Name="life" Type="int" />
+          <Property Name="ModelId" Type="int" Nullable="false" />
+          <Property Name="Specification" Type="nvarchar" MaxLength="150" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="Life" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -140,38 +141,38 @@
           <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_AgeDataInput_Fleet">
-          <End Role="Fleet" Type="Self.Fleet" Multiplicity="0..1" />
+          <End Role="Fleet" Type="Self.Fleet" Multiplicity="1" />
           <End Role="AgeDataInput" Type="Self.AgeDataInput" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Fleet">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="AgeDataInput">
-              <PropertyRef Name="fleetid" />
+              <PropertyRef Name="FleetId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AgeDataInput_FleetAgeColours">
-          <End Role="FleetAgeColours" Type="Self.FleetAgeColours" Multiplicity="0..1" />
+          <End Role="FleetAgeColours" Type="Self.FleetAgeColours" Multiplicity="1" />
           <End Role="AgeDataInput" Type="Self.AgeDataInput" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FleetAgeColours">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="AgeDataInput">
-              <PropertyRef Name="colorid" />
+              <PropertyRef Name="ColorId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AgeDataInput_FleetModel">
-          <End Role="FleetModel" Type="Self.FleetModel" Multiplicity="0..1" />
+          <End Role="FleetModel" Type="Self.FleetModel" Multiplicity="1" />
           <End Role="AgeDataInput" Type="Self.AgeDataInput" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FleetModel">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="AgeDataInput">
-              <PropertyRef Name="fleetmodelid" />
+              <PropertyRef Name="FleetModelId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -212,26 +213,26 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_FleetCostCenterMapping_CostCenters">
-          <End Role="CostCenters" Type="Self.CostCenters" Multiplicity="0..1" />
+          <End Role="CostCenters" Type="Self.CostCenters" Multiplicity="1" />
           <End Role="FleetCostCenterMapping" Type="Self.FleetCostCenterMapping" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CostCenters">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FleetCostCenterMapping">
-              <PropertyRef Name="costcenterid" />
+              <PropertyRef Name="CostCenterId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_FleetCostCenterMapping_Fleet">
-          <End Role="Fleet" Type="Self.Fleet" Multiplicity="0..1" />
+          <End Role="Fleet" Type="Self.Fleet" Multiplicity="1" />
           <End Role="FleetCostCenterMapping" Type="Self.FleetCostCenterMapping" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Fleet">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FleetCostCenterMapping">
-              <PropertyRef Name="fleetid" />
+              <PropertyRef Name="FleetId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -276,10 +277,10 @@
           <End Role="FleetTransactions" Type="Self.FleetTransactions" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CostCenters">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FleetTransactions">
-              <PropertyRef Name="costcenterid" />
+              <PropertyRef Name="CostCenterId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -291,7 +292,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FleetTransactions">
-              <PropertyRef Name="equipmentid" />
+              <PropertyRef Name="EquipmentId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -303,7 +304,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FleetTransactions">
-              <PropertyRef Name="fleetid" />
+              <PropertyRef Name="FleetId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -315,7 +316,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FleetTransactions">
-              <PropertyRef Name="fleetmodelid" />
+              <PropertyRef Name="FleetModelId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -399,26 +400,27 @@
       <Schema Namespace="LCMPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AgeDataInput">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fleetmodelid" Type="Int32" />
-          <Property Name="colorid" Type="Int32" />
-          <Property Name="rangestart" Type="Int32" />
-          <Property Name="rangeend" Type="Int32" />
-          <Property Name="fleetid" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FleetModelId" Type="Int32" Nullable="false" />
+          <Property Name="ColorId" Type="Int32" Nullable="false" />
+          <Property Name="RangeStart" Type="Int32" Nullable="false" />
+          <Property Name="RangeEnd" Type="Int32" Nullable="false" />
+          <Property Name="FleetId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Fleet" Relationship="Self.FK_AgeDataInput_Fleet" FromRole="AgeDataInput" ToRole="Fleet" />
           <NavigationProperty Name="FleetAgeColours" Relationship="Self.FK_AgeDataInput_FleetAgeColours" FromRole="AgeDataInput" ToRole="FleetAgeColours" />
           <NavigationProperty Name="FleetModel" Relationship="Self.FK_AgeDataInput_FleetModel" FromRole="AgeDataInput" ToRole="FleetModel" />
         </EntityType>
         <EntityType Name="CostCenters">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="elementid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ElementId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Priority" Type="Int32" />
           <NavigationProperty Name="FleetCostCenterMapping" Relationship="Self.FK_FleetCostCenterMapping_CostCenters" FromRole="CostCenters" ToRole="FleetCostCenterMapping" />
           <NavigationProperty Name="FleetTransactions" Relationship="Self.FK_FleetTransactions_CostCenters" FromRole="CostCenters" ToRole="FleetTransactions" />
         </EntityType>
@@ -432,8 +434,8 @@
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="CreatedBy" Type="Int32" Nullable="false" />
           <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="FleetModel" Relationship="Self.FK_Equipment_FleetModel" FromRole="Equipment" ToRole="FleetModel" />
           <NavigationProperty Name="FleetTransactions" Relationship="Self.FK_FleetTransactions_Equipment" FromRole="Equipment" ToRole="FleetTransactions" />
         </EntityType>
@@ -447,8 +449,8 @@
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="CreatedBy" Type="Int32" Nullable="false" />
           <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="AgeDataInput" Relationship="Self.FK_AgeDataInput_Fleet" FromRole="Fleet" ToRole="AgeDataInput" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Fleet_Users" FromRole="Fleet" ToRole="Users" />
           <NavigationProperty Name="Users1" Relationship="Self.FK_Fleet_Users1" FromRole="Fleet" ToRole="Users" />
@@ -461,18 +463,18 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="colour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Colour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AgeDataInput" Relationship="Self.FK_AgeDataInput_FleetAgeColours" FromRole="FleetAgeColours" ToRole="AgeDataInput" />
         </EntityType>
         <EntityType Name="FleetCostCenterMapping">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fleetid" Type="Int32" />
-          <Property Name="costcenterid" Type="Int32" />
-          <Property Name="count" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FleetId" Type="Int32" Nullable="false" />
+          <Property Name="CostCenterId" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CostCenters" Relationship="Self.FK_FleetCostCenterMapping_CostCenters" FromRole="FleetCostCenterMapping" ToRole="CostCenters" />
           <NavigationProperty Name="Fleet" Relationship="Self.FK_FleetCostCenterMapping_Fleet" FromRole="FleetCostCenterMapping" ToRole="Fleet" />
         </EntityType>
@@ -498,29 +500,29 @@
         </EntityType>
         <EntityType Name="FleetTransactions">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fleetid" Type="Int32" />
-          <Property Name="fleetmodelid" Type="Int32" />
-          <Property Name="equipmentid" Type="Int32" />
-          <Property Name="costcenterid" Type="Int32" />
-          <Property Name="prontoplantnumber" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="pmtasknumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="nextdue" Type="Int32" />
-          <Property Name="activity" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="currenthour" Type="Int32" />
-          <Property Name="oem" Type="Int32" />
-          <Property Name="frequency" Type="Int32" />
-          <Property Name="labourduration" Type="Int32" />
-          <Property Name="labourcost" Type="Int32" />
-          <Property Name="materialcost" Type="Int32" />
-          <Property Name="oilcapacity" Type="Int32" />
-          <Property Name="oilcost" Type="Int32" />
-          <Property Name="tyrescost" Type="Int32" />
-          <Property Name="totalcost" Type="Int32" />
-          <Property Name="lastchange" Type="Int32" />
-          <Property Name="downtime" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FleetId" Type="Int32" />
+          <Property Name="FleetModelId" Type="Int32" />
+          <Property Name="EquipmentId" Type="Int32" />
+          <Property Name="CostCenterId" Type="Int32" />
+          <Property Name="ProntoPlantNumber" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PMTaskNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NextDue" Type="Int32" />
+          <Property Name="Activity" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentHour" Type="Int32" />
+          <Property Name="OEM" Type="Int32" />
+          <Property Name="Frequency" Type="Int32" />
+          <Property Name="LabourDuration" Type="Int32" />
+          <Property Name="LabourCost" Type="Int32" />
+          <Property Name="MaterialCost" Type="Int32" />
+          <Property Name="OilCapacity" Type="Int32" />
+          <Property Name="OilCost" Type="Int32" />
+          <Property Name="TyreCost" Type="Int32" />
+          <Property Name="TotalCost" Type="Int32" />
+          <Property Name="LastChange" Type="Int32" />
+          <Property Name="Downtime" Type="Int32" />
           <NavigationProperty Name="CostCenters" Relationship="Self.FK_FleetTransactions_CostCenters" FromRole="FleetTransactions" ToRole="CostCenters" />
           <NavigationProperty Name="Equipment" Relationship="Self.FK_FleetTransactions_Equipment" FromRole="FleetTransactions" ToRole="Equipment" />
           <NavigationProperty Name="Fleet" Relationship="Self.FK_FleetTransactions_Fleet" FromRole="FleetTransactions" ToRole="Fleet" />
@@ -528,22 +530,22 @@
         </EntityType>
         <EntityType Name="LubricantCost">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="component" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="cost" Type="Double" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Component" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cost" Type="Double" Nullable="false" />
         </EntityType>
         <EntityType Name="TyreCost">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="modelid" Type="Int32" />
-          <Property Name="specification" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="price" Type="Int32" />
-          <Property Name="count" Type="Int32" />
-          <Property Name="life" Type="Int32" />
+          <Property Name="ModelId" Type="Int32" Nullable="false" />
+          <Property Name="Specification" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <Property Name="Life" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -562,50 +564,50 @@
           <NavigationProperty Name="FleetModel1" Relationship="Self.FK_FleetModel_Users1" FromRole="Users" ToRole="FleetModel" />
         </EntityType>
         <Association Name="FK_AgeDataInput_Fleet">
-          <End Role="Fleet" Type="Self.Fleet" Multiplicity="0..1" />
+          <End Role="Fleet" Type="Self.Fleet" Multiplicity="1" />
           <End Role="AgeDataInput" Type="Self.AgeDataInput" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Fleet">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="AgeDataInput">
-              <PropertyRef Name="fleetid" />
+              <PropertyRef Name="FleetId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AgeDataInput_FleetAgeColours">
-          <End Role="FleetAgeColours" Type="Self.FleetAgeColours" Multiplicity="0..1" />
+          <End Role="FleetAgeColours" Type="Self.FleetAgeColours" Multiplicity="1" />
           <End Role="AgeDataInput" Type="Self.AgeDataInput" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FleetAgeColours">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="AgeDataInput">
-              <PropertyRef Name="colorid" />
+              <PropertyRef Name="ColorId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AgeDataInput_FleetModel">
-          <End Role="FleetModel" Type="Self.FleetModel" Multiplicity="0..1" />
+          <End Role="FleetModel" Type="Self.FleetModel" Multiplicity="1" />
           <End Role="AgeDataInput" Type="Self.AgeDataInput" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FleetModel">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="AgeDataInput">
-              <PropertyRef Name="fleetmodelid" />
+              <PropertyRef Name="FleetModelId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_FleetCostCenterMapping_CostCenters">
-          <End Role="CostCenters" Type="Self.CostCenters" Multiplicity="0..1" />
+          <End Role="CostCenters" Type="Self.CostCenters" Multiplicity="1" />
           <End Role="FleetCostCenterMapping" Type="Self.FleetCostCenterMapping" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CostCenters">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FleetCostCenterMapping">
-              <PropertyRef Name="costcenterid" />
+              <PropertyRef Name="CostCenterId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -614,10 +616,10 @@
           <End Role="FleetTransactions" Type="Self.FleetTransactions" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CostCenters">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FleetTransactions">
-              <PropertyRef Name="costcenterid" />
+              <PropertyRef Name="CostCenterId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -641,7 +643,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FleetTransactions">
-              <PropertyRef Name="equipmentid" />
+              <PropertyRef Name="EquipmentId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -670,14 +672,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_FleetCostCenterMapping_Fleet">
-          <End Role="Fleet" Type="Self.Fleet" Multiplicity="0..1" />
+          <End Role="Fleet" Type="Self.Fleet" Multiplicity="1" />
           <End Role="FleetCostCenterMapping" Type="Self.FleetCostCenterMapping" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Fleet">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FleetCostCenterMapping">
-              <PropertyRef Name="fleetid" />
+              <PropertyRef Name="FleetId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -701,7 +703,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FleetTransactions">
-              <PropertyRef Name="fleetid" />
+              <PropertyRef Name="FleetId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -737,7 +739,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FleetTransactions">
-              <PropertyRef Name="fleetmodelid" />
+              <PropertyRef Name="FleetModelId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -823,22 +825,23 @@
           <EntitySetMapping Name="AgeDataInput">
             <EntityTypeMapping TypeName="LCMPModel.AgeDataInput">
               <MappingFragment StoreEntitySet="AgeDataInput">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="fleetmodelid" ColumnName="fleetmodelid" />
-                <ScalarProperty Name="colorid" ColumnName="colorid" />
-                <ScalarProperty Name="rangestart" ColumnName="rangestart" />
-                <ScalarProperty Name="rangeend" ColumnName="rangeend" />
-                <ScalarProperty Name="fleetid" ColumnName="fleetid" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FleetModelId" ColumnName="FleetModelId" />
+                <ScalarProperty Name="ColorId" ColumnName="ColorId" />
+                <ScalarProperty Name="RangeStart" ColumnName="RangeStart" />
+                <ScalarProperty Name="RangeEnd" ColumnName="RangeEnd" />
+                <ScalarProperty Name="FleetId" ColumnName="FleetId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CostCenters">
             <EntityTypeMapping TypeName="LCMPModel.CostCenters">
               <MappingFragment StoreEntitySet="CostCenters">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="elementid" ColumnName="elementid" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ElementId" ColumnName="ElementId" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -851,8 +854,8 @@
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -865,8 +868,8 @@
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -874,18 +877,18 @@
             <EntityTypeMapping TypeName="LCMPModel.FleetAgeColours">
               <MappingFragment StoreEntitySet="FleetAgeColours">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="colour" ColumnName="colour" />
-                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="Colour" ColumnName="Colour" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FleetCostCenterMapping">
             <EntityTypeMapping TypeName="LCMPModel.FleetCostCenterMapping">
               <MappingFragment StoreEntitySet="FleetCostCenterMapping">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="fleetid" ColumnName="fleetid" />
-                <ScalarProperty Name="costcenterid" ColumnName="costcenterid" />
-                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FleetId" ColumnName="FleetId" />
+                <ScalarProperty Name="CostCenterId" ColumnName="CostCenterId" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -907,36 +910,36 @@
           <EntitySetMapping Name="FleetTransactions">
             <EntityTypeMapping TypeName="LCMPModel.FleetTransactions">
               <MappingFragment StoreEntitySet="FleetTransactions">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="fleetid" ColumnName="fleetid" />
-                <ScalarProperty Name="fleetmodelid" ColumnName="fleetmodelid" />
-                <ScalarProperty Name="equipmentid" ColumnName="equipmentid" />
-                <ScalarProperty Name="costcenterid" ColumnName="costcenterid" />
-                <ScalarProperty Name="prontoplantnumber" ColumnName="prontoplantnumber" />
-                <ScalarProperty Name="pmtasknumber" ColumnName="pmtasknumber" />
-                <ScalarProperty Name="nextdue" ColumnName="nextdue" />
-                <ScalarProperty Name="activity" ColumnName="activity" />
-                <ScalarProperty Name="currenthour" ColumnName="currenthour" />
-                <ScalarProperty Name="oem" ColumnName="oem" />
-                <ScalarProperty Name="frequency" ColumnName="frequency" />
-                <ScalarProperty Name="labourduration" ColumnName="labourduration" />
-                <ScalarProperty Name="labourcost" ColumnName="labourcost" />
-                <ScalarProperty Name="materialcost" ColumnName="materialcost" />
-                <ScalarProperty Name="oilcapacity" ColumnName="oilcapacity" />
-                <ScalarProperty Name="oilcost" ColumnName="oilcost" />
-                <ScalarProperty Name="tyrescost" ColumnName="tyrescost" />
-                <ScalarProperty Name="totalcost" ColumnName="totalcost" />
-                <ScalarProperty Name="lastchange" ColumnName="lastchange" />
-                <ScalarProperty Name="downtime" ColumnName="downtime" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FleetId" ColumnName="FleetId" />
+                <ScalarProperty Name="FleetModelId" ColumnName="FleetModelId" />
+                <ScalarProperty Name="EquipmentId" ColumnName="EquipmentId" />
+                <ScalarProperty Name="CostCenterId" ColumnName="CostCenterId" />
+                <ScalarProperty Name="ProntoPlantNumber" ColumnName="ProntoPlantNumber" />
+                <ScalarProperty Name="PMTaskNumber" ColumnName="PMTaskNumber" />
+                <ScalarProperty Name="NextDue" ColumnName="NextDue" />
+                <ScalarProperty Name="Activity" ColumnName="Activity" />
+                <ScalarProperty Name="CurrentHour" ColumnName="CurrentHour" />
+                <ScalarProperty Name="OEM" ColumnName="OEM" />
+                <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+                <ScalarProperty Name="LabourDuration" ColumnName="LabourDuration" />
+                <ScalarProperty Name="LabourCost" ColumnName="LabourCost" />
+                <ScalarProperty Name="MaterialCost" ColumnName="MaterialCost" />
+                <ScalarProperty Name="OilCapacity" ColumnName="OilCapacity" />
+                <ScalarProperty Name="OilCost" ColumnName="OilCost" />
+                <ScalarProperty Name="TyreCost" ColumnName="TyreCost" />
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="LastChange" ColumnName="LastChange" />
+                <ScalarProperty Name="Downtime" ColumnName="Downtime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LubricantCost">
             <EntityTypeMapping TypeName="LCMPModel.LubricantCost">
               <MappingFragment StoreEntitySet="LubricantCost">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="component" ColumnName="component" />
-                <ScalarProperty Name="cost" ColumnName="cost" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Component" ColumnName="Component" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -944,11 +947,11 @@
             <EntityTypeMapping TypeName="LCMPModel.TyreCost">
               <MappingFragment StoreEntitySet="TyreCost">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="modelid" ColumnName="modelid" />
-                <ScalarProperty Name="specification" ColumnName="specification" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="count" ColumnName="count" />
-                <ScalarProperty Name="life" ColumnName="life" />
+                <ScalarProperty Name="ModelId" ColumnName="ModelId" />
+                <ScalarProperty Name="Specification" ColumnName="Specification" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Life" ColumnName="Life" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
