@@ -5,8 +5,6 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 
 namespace PIP_LCMP.Authorization.TokenManager
@@ -80,13 +78,11 @@ namespace PIP_LCMP.Authorization.TokenManager
             }
         }
 
-        private static byte[] GetBytes(string input)
-        {
-            var bytes = new byte[input.Length * sizeof(char)];
-            Buffer.BlockCopy(input.ToCharArray(), 0, bytes, 0, bytes.Length);
-            return bytes;
-        }
-
+        /// <summary>
+        /// Gets UserId from token
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public int GetUserIdFromToken(string token)
         {
             try
@@ -103,5 +99,13 @@ namespace PIP_LCMP.Authorization.TokenManager
                 throw;
             }
         }
+
+        private static byte[] GetBytes(string input)
+        {
+            var bytes = new byte[input.Length * sizeof(char)];
+            Buffer.BlockCopy(input.ToCharArray(), 0, bytes, 0, bytes.Length);
+            return bytes;
+        }
+
     }
 }

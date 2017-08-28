@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="19eadc2aa3f7409d99edb15db969d55c" Name="Diagram1">
+      <Diagram DiagramId="071d3ddf88eb47cc8087cef86c8f136e" Name="Diagram1">
         <EntityTypeShape EntityType="LCMPModel.AgeDataInput" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="LCMPModel.CostCenters" Width="1.5" PointX="10.5" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="LCMPModel.Equipment" Width="1.5" PointX="10.5" PointY="2.125" IsExpanded="true" />

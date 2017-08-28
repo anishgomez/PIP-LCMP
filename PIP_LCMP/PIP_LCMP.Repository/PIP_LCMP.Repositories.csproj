@@ -61,6 +61,8 @@
     <Compile Include="ContextProvider\DbContextProvider.cs" />
     <Compile Include="ContextProvider\IDbContextProvider.cs" />
     <Compile Include="DI\DependencyResolver.cs" />
+    <Compile Include="Equipment\EquipmentRepository.cs" />
+    <Compile Include="Equipment\IEquipmentRepository.cs" />
     <Compile Include="FleetModel\FleetModelRepository.cs" />
     <Compile Include="FleetModel\IFleetModelRepository.cs" />
     <Compile Include="Fleet\FleetRepository.cs" />
