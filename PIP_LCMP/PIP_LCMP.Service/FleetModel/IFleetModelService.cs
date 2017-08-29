@@ -1,14 +1,15 @@
 ﻿using PIP_LCMP.BusinessEntities.FleetModel;
-using System;
+using PIP_LCMP.BusinessEntities.Generic;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PIP_LCMP.Services.FleetModel
 {
     public interface IFleetModelService
     {
         ICollection<FleetModelModel> GetFleetModelsByFleetId(int fleetId);
+
+        FleetModelModel GetFleetModelById(int id);
+
+        GenericResponseModel AddFleetModel(FleetModelModel fleetModelModel);
     }
 }

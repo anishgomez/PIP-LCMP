@@ -9,5 +9,7 @@ namespace PIP_LCMP.Repositories.Equipment
 
         EquipmentModel GetEquipmentById(int id);
 
+        int AddEquipment(EquipmentModel equipment);
+
     }
 }

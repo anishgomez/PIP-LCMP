@@ -16,5 +16,8 @@ namespace PIP_LCMP.Utilities
         public const string NoFleets = "No fleets found";
         public const string NoFleetModels = "No fleet models found";
         public const string NoEquipments = "No equipments found";
+        public const string AddEquipmentSuccess = "Equipment added successfully";
+        public const string AddFleetSuccess = "Fleet added successfully";
+        public const string AddFleetModelSuccess = "Fleet Model added successfully";
     }
 }

@@ -1,4 +1,5 @@
 ﻿using PIP_LCMP.BusinessEntities.Equipment;
+using PIP_LCMP.BusinessEntities.Generic;
 using System.Collections.Generic;
 
 namespace PIP_LCMP.Services.Equipment
@@ -7,6 +8,8 @@ namespace PIP_LCMP.Services.Equipment
     {
         ICollection<EquipmentModel> GetEquipments();
 
-        EquipmentModel GetEquipmentById();
+        EquipmentModel GetEquipmentById(int id);
+
+        GenericResponseModel AddEquipment(EquipmentModel equipmentModel);
     }
 }

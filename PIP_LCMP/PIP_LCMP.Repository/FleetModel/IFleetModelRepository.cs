@@ -10,5 +10,8 @@ namespace PIP_LCMP.Repositories.FleetModel
     public interface IFleetModelRepository
     {
         ICollection<FleetModelModel> GetFleetModelsByFleetId(int fleetId);
+        FleetModelModel GetFleetModelById(int id);
+
+        int AddFleetModel(FleetModelModel fleetModelModel);
     }
 }

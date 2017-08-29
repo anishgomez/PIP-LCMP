@@ -5,19 +5,22 @@ using PIP_LCMP.Repositories.ContextProvider;
 using AutoMapper;
 using System.Linq.Expressions;
 using System.Linq;
+using PIP_LCMP.Repositories.UnitofWork;
 
 namespace PIP_LCMP.Repositories.Equipment
 {
     public class EquipmentRepository : BaseRepository<DataEntities.Equipment>, IEquipmentRepository
     {
         private IMapper _mapper;
-        public EquipmentRepository(IDbContextProvider dbContextProvider)
+        private IUnitOfWork _unitOfWork;
+        public EquipmentRepository(IDbContextProvider dbContextProvider, IUnitOfWork unitOfWork)
             : base(dbContextProvider)
         {
             var config = new MapperConfiguration(cfg =>
             cfg.CreateMap<DataEntities.Equipment, EquipmentModel>()
            );
             _mapper = config.CreateMapper();
+            _unitOfWork = unitOfWork;
         }
 
         public ICollection<EquipmentModel> GetAllEquipments()
@@ -35,6 +38,20 @@ namespace PIP_LCMP.Repositories.Equipment
             if (equipment != null)
                 return _mapper.Map<EquipmentModel>(equipment);
             return null;
+        }
+
+        public int AddEquipment(EquipmentModel equipmentModel)
+        {
+            var equipment = new DataEntities.Equipment
+            {
+                Name = equipmentModel.Name,
+                CreatedDate = DateTime.Now,
+                IsActive = true,
+                FleetModelId = equipmentModel.FleetModelId,
+            };
+            Add(equipment);
+            _unitOfWork.SaveChanges();
+            return equipment.Id;
         }
     }
 }

@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using PIP_LCMP.BusinessEntities.Equipment;
+using PIP_LCMP.BusinessEntities.Generic;
 using PIP_LCMP.Repositories.Equipment;
+using PIP_LCMP.Utilities;
 
 namespace PIP_LCMP.Services.Equipment
 {
@@ -19,6 +22,17 @@ namespace PIP_LCMP.Services.Equipment
         public EquipmentModel GetEquipmentById(int id)
         {
             return _equipmentRepository.GetEquipmentById(id);
+        }
+
+        public GenericResponseModel AddEquipment(EquipmentModel equipmentModel)
+        {
+            var equipmentId = _equipmentRepository.AddEquipment(equipmentModel);
+            return new GenericResponseModel
+            {
+                IsSuccess = true,
+                ResponseMessage = Constants.AddEquipmentSuccess,
+                Response = equipmentId,
+            };
         }
     }
 }
