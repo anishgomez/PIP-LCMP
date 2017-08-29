@@ -1,4 +1,5 @@
 ﻿using PIP_LCMP.Authorization.TokenManager;
+using PIP_LCMP.Repositories.Equipment;
 using PIP_LCMP.Repositories.Fleet;
 using PIP_LCMP.Repositories.FleetModel;
 using PIP_LCMP.Repositories.User;
@@ -14,6 +15,7 @@ namespace PIP_LCMP.Services.DI
             container.Register<IUserRepository, UserRepository>(Lifestyle.Scoped);
             container.Register<IFleetRepository, FleetRepository>(Lifestyle.Scoped);
             container.Register<IFleetModelRepository, FleetModelRepository>(Lifestyle.Scoped);
+            container.Register<IEquipmentRepository, EquipmentRepository>(Lifestyle.Scoped);
             container.Register<IPasswordManager, PasswordManager>(Lifestyle.Scoped);
             container.Register<ITokenManager, TokenManager>(Lifestyle.Scoped);
         }
