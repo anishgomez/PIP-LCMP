@@ -4,33 +4,49 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="071d3ddf88eb47cc8087cef86c8f136e" Name="Diagram1">
-        <EntityTypeShape EntityType="LCMPModel.AgeDataInput" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="LCMPModel.CostCenters" Width="1.5" PointX="10.5" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="LCMPModel.Equipment" Width="1.5" PointX="10.5" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="LCMPModel.Fleet" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LCMPModel.FleetAgeColours" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="LCMPModel.FleetCostCenterMapping" Width="1.5" PointX="8.25" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="LCMPModel.FleetModel" Width="1.5" PointX="8.25" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="LCMPModel.FleetTransactions" Width="1.5" PointX="12.75" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="LCMPModel.LubricantCost" Width="1.5" PointX="5.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LCMPModel.TyreCost" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LCMPModel.Users" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+      <Diagram DiagramId="6cc7856b0ef64b70ba099f395cc7cbe6" Name="Diagram1" ZoomLevel="78">
+        <EntityTypeShape EntityType="LCMPModel.AgeDataInput" Width="1.5" PointX="5.25" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMPModel.CostCenters" Width="1.5" PointX="3" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMPModel.Equipment" Width="1.5" PointX="6" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMPModel.Fleet" Width="1.5" PointX="3" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMPModel.FleetAgeColours" Width="1.5" PointX="3" PointY="28.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMPModel.FleetCostCenterMapping" Width="1.5" PointX="5.25" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMPModel.FleetModel" Width="1.5" PointX="8.25" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMPModel.FleetTransactions" Width="1.5" PointX="8.25" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMPModel.LubricantCost" Width="1.5" PointX="3" PointY="32" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMPModel.TyreCost" Width="1.5" PointX="3" PointY="35.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LCMPModel.Users" Width="1.5" PointX="0.75" PointY="17.375" IsExpanded="true" />
         <AssociationConnector Association="LCMPModel.FK_AgeDataInput_Fleet" ManuallyRouted="false" />
         <AssociationConnector Association="LCMPModel.FK_AgeDataInput_FleetAgeColours" ManuallyRouted="false" />
         <AssociationConnector Association="LCMPModel.FK_AgeDataInput_FleetModel" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMPModel.FK_AgeDataInput_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMPModel.FK_AgeDataInput_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMPModel.FK_CostCenters_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMPModel.FK_CostCenters_Users1" ManuallyRouted="false" />
         <AssociationConnector Association="LCMPModel.FK_FleetCostCenterMapping_CostCenters" ManuallyRouted="false" />
         <AssociationConnector Association="LCMPModel.FK_FleetTransactions_CostCenters" ManuallyRouted="false" />
         <AssociationConnector Association="LCMPModel.FK_Equipment_FleetModel" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMPModel.FK_Equipment_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMPModel.FK_Equipment_Users1" ManuallyRouted="false" />
         <AssociationConnector Association="LCMPModel.FK_FleetTransactions_Equipment" ManuallyRouted="false" />
         <AssociationConnector Association="LCMPModel.FK_Fleet_Users" ManuallyRouted="false" />
         <AssociationConnector Association="LCMPModel.FK_Fleet_Users1" ManuallyRouted="false" />
         <AssociationConnector Association="LCMPModel.FK_FleetCostCenterMapping_Fleet" ManuallyRouted="false" />
         <AssociationConnector Association="LCMPModel.FK_FleetModel_Fleet" ManuallyRouted="false" />
         <AssociationConnector Association="LCMPModel.FK_FleetTransactions_Fleet" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMPModel.FK_FleetAgeColours_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMPModel.FK_FleetAgeColours_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMPModel.FK_FleetCostCenterMapping_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMPModel.FK_FleetCostCenterMapping_Users1" ManuallyRouted="false" />
         <AssociationConnector Association="LCMPModel.FK_FleetModel_Users" ManuallyRouted="false" />
         <AssociationConnector Association="LCMPModel.FK_FleetModel_Users1" ManuallyRouted="false" />
         <AssociationConnector Association="LCMPModel.FK_FleetTransactions_FleetModel" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMPModel.FK_FleetTransactions_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMPModel.FK_FleetTransactions_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMPModel.FK_LubricantCost_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMPModel.FK_LubricantCost_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMPModel.FK_TyreCost_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="LCMPModel.FK_TyreCost_Users1" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

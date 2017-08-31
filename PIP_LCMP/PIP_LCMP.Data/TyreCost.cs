@@ -14,11 +14,18 @@ namespace PIP_LCMP.DataEntities
     
     public partial class TyreCost
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public int ModelId { get; set; }
         public string Specification { get; set; }
         public int Price { get; set; }
         public int Count { get; set; }
         public int Life { get; set; }
+        public int CreatedBy { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public Nullable<int> UpdatedBy { get; set; }
+        public Nullable<System.DateTime> UpdatedDate { get; set; }
+    
+        public virtual Users Users { get; set; }
+        public virtual Users Users1 { get; set; }
     }
 }

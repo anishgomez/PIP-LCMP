@@ -27,10 +27,10 @@ namespace PIP_LCMP.DataEntities
         public int FleetId { get; set; }
         public Nullable<int> SMUHours { get; set; }
         public bool IsActive { get; set; }
-        public System.DateTime CreatedAt { get; set; }
-        public System.DateTime UpdatedAt { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public Nullable<System.DateTime> UpdatedDate { get; set; }
         public int CreatedBy { get; set; }
-        public int UpdatedBy { get; set; }
+        public Nullable<int> UpdatedBy { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AgeDataInput> AgeDataInput { get; set; }

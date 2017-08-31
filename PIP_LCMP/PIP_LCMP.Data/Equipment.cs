@@ -25,11 +25,13 @@ namespace PIP_LCMP.DataEntities
         public int FleetModelId { get; set; }
         public bool IsActive { get; set; }
         public int CreatedBy { get; set; }
-        public int UpdatedBy { get; set; }
+        public Nullable<int> UpdatedBy { get; set; }
         public System.DateTime CreatedDate { get; set; }
-        public System.DateTime UpdatedDate { get; set; }
+        public Nullable<System.DateTime> UpdatedDate { get; set; }
     
         public virtual FleetModel FleetModel { get; set; }
+        public virtual Users Users { get; set; }
+        public virtual Users Users1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FleetTransactions> FleetTransactions { get; set; }
     }

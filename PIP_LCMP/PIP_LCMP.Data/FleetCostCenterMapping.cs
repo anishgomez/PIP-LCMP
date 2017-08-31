@@ -18,8 +18,14 @@ namespace PIP_LCMP.DataEntities
         public int FleetId { get; set; }
         public int CostCenterId { get; set; }
         public int Count { get; set; }
+        public int CreatedBy { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public Nullable<int> UpdatedBy { get; set; }
+        public Nullable<System.DateTime> UpdatedDate { get; set; }
     
         public virtual CostCenters CostCenters { get; set; }
         public virtual Fleet Fleet { get; set; }
+        public virtual Users Users { get; set; }
+        public virtual Users Users1 { get; set; }
     }
 }

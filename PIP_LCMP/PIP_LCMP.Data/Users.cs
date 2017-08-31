@@ -17,10 +17,26 @@ namespace PIP_LCMP.DataEntities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Users()
         {
+            this.AgeDataInput = new HashSet<AgeDataInput>();
+            this.AgeDataInput1 = new HashSet<AgeDataInput>();
+            this.CostCenters = new HashSet<CostCenters>();
+            this.CostCenters1 = new HashSet<CostCenters>();
+            this.Equipment = new HashSet<Equipment>();
+            this.Equipment1 = new HashSet<Equipment>();
             this.Fleet = new HashSet<Fleet>();
             this.Fleet1 = new HashSet<Fleet>();
+            this.FleetAgeColours = new HashSet<FleetAgeColours>();
+            this.FleetAgeColours1 = new HashSet<FleetAgeColours>();
+            this.FleetCostCenterMapping = new HashSet<FleetCostCenterMapping>();
+            this.FleetCostCenterMapping1 = new HashSet<FleetCostCenterMapping>();
             this.FleetModel = new HashSet<FleetModel>();
             this.FleetModel1 = new HashSet<FleetModel>();
+            this.FleetTransactions = new HashSet<FleetTransactions>();
+            this.FleetTransactions1 = new HashSet<FleetTransactions>();
+            this.LubricantCost = new HashSet<LubricantCost>();
+            this.LubricantCost1 = new HashSet<LubricantCost>();
+            this.TyreCost = new HashSet<TyreCost>();
+            this.TyreCost1 = new HashSet<TyreCost>();
         }
     
         public int Id { get; set; }
@@ -32,12 +48,44 @@ namespace PIP_LCMP.DataEntities
         public string Mobile { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AgeDataInput> AgeDataInput { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AgeDataInput> AgeDataInput1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CostCenters> CostCenters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CostCenters> CostCenters1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Equipment> Equipment { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Equipment> Equipment1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Fleet> Fleet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Fleet> Fleet1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FleetAgeColours> FleetAgeColours { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FleetAgeColours> FleetAgeColours1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FleetCostCenterMapping> FleetCostCenterMapping { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FleetCostCenterMapping> FleetCostCenterMapping1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FleetModel> FleetModel { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FleetModel> FleetModel1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FleetTransactions> FleetTransactions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FleetTransactions> FleetTransactions1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LubricantCost> LubricantCost { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LubricantCost> LubricantCost1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TyreCost> TyreCost { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TyreCost> TyreCost1 { get; set; }
     }
 }

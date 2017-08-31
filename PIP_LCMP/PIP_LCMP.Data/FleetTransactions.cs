@@ -35,10 +35,16 @@ namespace PIP_LCMP.DataEntities
         public Nullable<int> TotalCost { get; set; }
         public Nullable<int> LastChange { get; set; }
         public Nullable<int> Downtime { get; set; }
+        public int CreatedBy { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public Nullable<int> UpdatedBy { get; set; }
+        public Nullable<System.DateTime> UpdatedDate { get; set; }
     
         public virtual CostCenters CostCenters { get; set; }
         public virtual Equipment Equipment { get; set; }
         public virtual Fleet Fleet { get; set; }
         public virtual FleetModel FleetModel { get; set; }
+        public virtual Users Users { get; set; }
+        public virtual Users Users1 { get; set; }
     }
 }
