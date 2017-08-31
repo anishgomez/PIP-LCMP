@@ -5,6 +5,7 @@ using System.Linq;
 using AutoMapper;
 using System.Linq.Expressions;
 using PIP_LCMP.Repositories.UnitofWork;
+using PIP_LCMP.BusinessEntities.Fleet;
 
 namespace PIP_LCMP.Repositories.Fleet
 {
@@ -39,18 +40,42 @@ namespace PIP_LCMP.Repositories.Fleet
             return null;
         }
 
-        public int AddFleet(BusinessEntities.Fleet.FleetModel fleetModel)
+        public int AddFleet(BusinessEntities.Fleet.FleetModel fleetModel, int userId)
         {
             var fleet = new DataEntities.Fleet
             {
                 Name = fleetModel.Name,
                 CreatedDate = DateTime.Now,
+                CreatedBy = userId,
                 Description = fleetModel.Description,
                 IsActive = true,
             };
             Add(fleet);
             _unitOfWork.SaveChanges();
             return fleet.Id;
+        }
+
+        public bool DeleteFleet(int fleetId, int userId)
+        {
+            var fleet = GetById(fleetId);
+            fleet.IsActive = false;
+            _unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public bool EditFleet(BusinessEntities.Fleet.FleetModel fleetModel, int userId)
+        {
+            var fleet = new DataEntities.Fleet
+            {
+                Name = fleetModel.Name,
+                UpdatedBy=userId,
+                UpdatedDate=DateTime.Now,
+                Description = fleetModel.Description,
+                IsActive = true,
+            };
+            Edit(fleet);
+            _unitOfWork.SaveChanges();
+            return true;
         }
     }
 }

@@ -40,7 +40,29 @@ namespace PIP_LCMP.Api.Controllers
         [Route("addEquipment")]
         public IHttpActionResult AddEquipment(EquipmentModel equipmentModel)
         {
-            var response = _equipmentService.AddEquipment(equipmentModel);
+            object userId;
+            Request.Properties.TryGetValue("UserId", out userId);
+            var response = _equipmentService.AddEquipment(equipmentModel, (int)userId);
+            return Ok(response);
+        }
+
+        [HttpPost]
+        [Route("editEquipment")]
+        public IHttpActionResult EditEquipment(EquipmentModel equipmentModel)
+        {
+            object userId;
+            Request.Properties.TryGetValue("UserId", out userId);
+            var response = _equipmentService.EditEquipment(equipmentModel, (int)userId);
+            return Ok(response);
+        }
+
+        [HttpDelete]
+        [Route("deleteEquipment")]
+        public IHttpActionResult DeleteEquipment(int equipmentId)
+        {
+            object userId;
+            Request.Properties.TryGetValue("UserId", out userId);
+            var response = _equipmentService.DeleteEquipment(equipmentId, (int)userId);
             return Ok(response);
         }
     }

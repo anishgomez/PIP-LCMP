@@ -8,6 +8,10 @@ namespace PIP_LCMP.Repositories.Fleet
 
         BusinessEntities.Fleet.FleetModel GetFleetById(int id);
 
-        int AddFleet(BusinessEntities.Fleet.FleetModel fleetModel);
+        int AddFleet(BusinessEntities.Fleet.FleetModel fleetModel, int userId);
+
+        bool EditFleet(BusinessEntities.Fleet.FleetModel fleetModel, int userId);
+
+        bool DeleteFleet(int fleetId, int userId);
     }
 }

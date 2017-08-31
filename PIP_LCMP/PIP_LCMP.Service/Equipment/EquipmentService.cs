@@ -24,14 +24,36 @@ namespace PIP_LCMP.Services.Equipment
             return _equipmentRepository.GetEquipmentById(id);
         }
 
-        public GenericResponseModel AddEquipment(EquipmentModel equipmentModel)
+        public GenericResponseModel AddEquipment(EquipmentModel equipmentModel, int userId)
         {
-            var equipmentId = _equipmentRepository.AddEquipment(equipmentModel);
+            var equipmentId = _equipmentRepository.AddEquipment(equipmentModel, userId);
             return new GenericResponseModel
             {
                 IsSuccess = true,
                 ResponseMessage = Constants.AddEquipmentSuccess,
                 Response = equipmentId,
+            };
+        }
+
+        public GenericResponseModel EditEquipment(EquipmentModel equipmentModel, int userId)
+        {
+            var isSuccess = _equipmentRepository.EditEquipment(equipmentModel, userId);
+            return new GenericResponseModel
+            {
+                IsSuccess = true,
+                ResponseMessage = Constants.EditEquipmentSuccess,
+                Response = isSuccess,
+            };
+        }
+
+        public GenericResponseModel DeleteEquipment(int equipmentId, int userId)
+        {
+            var isSuccess = _equipmentRepository.DeleteEquipment(equipmentId, userId);
+            return new GenericResponseModel
+            {
+                IsSuccess = true,
+                ResponseMessage = Constants.DeleteEquipmentSuccess,
+                Response = isSuccess,
             };
         }
     }

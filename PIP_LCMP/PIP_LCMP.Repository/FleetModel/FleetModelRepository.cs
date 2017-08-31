@@ -46,7 +46,7 @@ namespace PIP_LCMP.Repositories.FleetModel
             {
                 Name = fleetModelModel.Name,
                 IsActive = true,
-                CreatedAt = DateTime.Now,
+                CreatedDate = DateTime.Now,
                 FleetId = fleetModelModel.FleetId,
                 SMUHours = fleetModelModel.SMUHours,
             };

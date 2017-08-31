@@ -10,6 +10,10 @@ namespace PIP_LCMP.Services.Equipment
 
         EquipmentModel GetEquipmentById(int id);
 
-        GenericResponseModel AddEquipment(EquipmentModel equipmentModel);
+        GenericResponseModel AddEquipment(EquipmentModel equipmentModel, int userId);
+
+        GenericResponseModel EditEquipment(EquipmentModel equipmentModel, int userId);
+
+        GenericResponseModel DeleteEquipment(int equipmentId, int userId);
     }
 }

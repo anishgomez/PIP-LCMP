@@ -9,7 +9,11 @@ namespace PIP_LCMP.Repositories.Equipment
 
         EquipmentModel GetEquipmentById(int id);
 
-        int AddEquipment(EquipmentModel equipment);
+        int AddEquipment(EquipmentModel equipment, int userId);
+
+        bool EditEquipment(EquipmentModel equipment, int userId);
+
+        bool DeleteEquipment(int equipmentId, int userId);
 
     }
 }

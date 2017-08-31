@@ -40,18 +40,42 @@ namespace PIP_LCMP.Repositories.Equipment
             return null;
         }
 
-        public int AddEquipment(EquipmentModel equipmentModel)
+        public int AddEquipment(EquipmentModel equipmentModel, int userId)
         {
             var equipment = new DataEntities.Equipment
             {
                 Name = equipmentModel.Name,
                 CreatedDate = DateTime.Now,
+                CreatedBy = userId,
                 IsActive = true,
                 FleetModelId = equipmentModel.FleetModelId,
             };
             Add(equipment);
             _unitOfWork.SaveChanges();
             return equipment.Id;
+        }
+
+        public bool EditEquipment(EquipmentModel equipmentModel, int userId)
+        {
+            var equipment = new DataEntities.Equipment
+            {
+                Name = equipmentModel.Name,
+                IsActive = true,
+                FleetModelId = equipmentModel.FleetModelId,
+                UpdatedDate = DateTime.Now,
+                UpdatedBy = userId,
+            };
+            Edit(equipment);
+            _unitOfWork.SaveChanges();
+            return true;
+        }
+
+        public bool DeleteEquipment(int equipmentId, int userId)
+        {
+            var equipment = GetById(equipmentId);
+            equipment.IsActive = false;
+            _unitOfWork.SaveChanges();
+            return true;
         }
     }
 }

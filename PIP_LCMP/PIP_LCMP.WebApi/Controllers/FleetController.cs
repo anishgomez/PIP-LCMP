@@ -40,7 +40,9 @@ namespace PIP_LCMP.Api.Controllers
         [Route("addFleet")]
         public IHttpActionResult AddFleet(FleetModel fleet)
         {
-            var response = _fleetService.AddFleet(fleet);
+            object userId;
+            Request.Properties.TryGetValue("UserId", out userId);
+            var response = _fleetService.AddFleet(fleet, (int)userId);
             return Ok(response);
         }
     }

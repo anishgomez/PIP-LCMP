@@ -25,9 +25,9 @@ namespace PIP_LCMP.Services.Fleet
             return _fleetRepository.GetAllFleet();
         }
 
-        public GenericResponseModel AddFleet(BusinessEntities.Fleet.FleetModel fleetModel)
+        public GenericResponseModel AddFleet(BusinessEntities.Fleet.FleetModel fleetModel, int userId)
         {
-            var fleetId = _fleetRepository.AddFleet(fleetModel);
+            var fleetId = _fleetRepository.AddFleet(fleetModel, userId);
             return new GenericResponseModel
             {
                 IsSuccess = true,

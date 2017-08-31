@@ -19,5 +19,7 @@ namespace PIP_LCMP.Utilities
         public const string AddEquipmentSuccess = "Equipment added successfully";
         public const string AddFleetSuccess = "Fleet added successfully";
         public const string AddFleetModelSuccess = "Fleet Model added successfully";
+        public const string EditEquipmentSuccess = "Equipment updated successfully";
+        public const string DeleteEquipmentSuccess = "Equipment deleted successfully";
     }
 }

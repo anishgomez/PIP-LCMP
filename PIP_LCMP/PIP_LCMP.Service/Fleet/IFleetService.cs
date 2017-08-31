@@ -9,6 +9,6 @@ namespace PIP_LCMP.Services.Fleet
 
         BusinessEntities.Fleet.FleetModel GetFleetModelById(int id);
 
-        GenericResponseModel AddFleet(BusinessEntities.Fleet.FleetModel fleetModel);
+        GenericResponseModel AddFleet(BusinessEntities.Fleet.FleetModel fleetModel, int userId);
     }
 }
